@@ -1,0 +1,19 @@
+.header {
+    height: auto;
+    padding: 16px 24px;
+
+    :global {
+        .ant-typography {
+            margin-bottom: 0;
+        }
+    }
+}
+.breadcrumbs {
+    margin-bottom: 8px;
+}
+.space {
+    align-items: start;
+}
+.title {
+    margin-top: 6px;
+}
