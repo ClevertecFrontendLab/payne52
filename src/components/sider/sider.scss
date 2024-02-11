@@ -10,8 +10,9 @@
     & .logo-space {
         width: 100%;
         justify-content: center;
-        padding: 30px 0 50px;
+        margin: 30px 0 50px;
         overflow: hidden;
+        height: 64px;
 
         & svg {
             height: 33px;
@@ -45,6 +46,9 @@
             margin-bottom: 0;
             border-top: 1px solid $character-light-dividers;
 
+            & .ant-menu-title-content {
+                margin-left: 25px;
+            }
             & svg path {
                 fill: $neutral-gray-13;
             }
@@ -62,9 +66,9 @@
         position: absolute;
         right: -20px;
         width: 20px;
-        height: 66px;
+        height: 50px;
         top: 50%;
-        margin-top: -33px;
+        margin-top: -25px;
         border-radius: 0;
         border: 0;
         padding: 0;

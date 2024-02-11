@@ -1,17 +1,30 @@
-import { Card } from 'antd';
+import { Card, Divider } from 'antd';
 
 import './card.scss';
 
 interface CardInt {
     children?: React.ReactNode;
     className?: string;
-    title?: React.ReactNode;
+    title?: string;
+    description?: string;
 }
 
-export const AntdCard = ({ children, className = '', title }: CardInt) => {
+const { Meta } = Card;
+
+export const AntdCard = ({ children, className = '', title, description }: CardInt) => {
     return (
-        <Card className={className ? 'card ' + className : 'card'} title={title}>
-            {children}
-        </Card>
+        <>
+            {description ? (
+                <Card className={className ? 'card card-meta ' + className : 'card card-meta'}>
+                    <Meta title={title} description={description} />
+                    <Divider className='divider' />
+                    {children}
+                </Card>
+            ) : (
+                <Card className={className ? 'card ' + className : 'card'} title={title}>
+                    {children}
+                </Card>
+            )}
+        </>
     );
 };

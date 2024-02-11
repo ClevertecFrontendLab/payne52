@@ -2,8 +2,10 @@
 
 .content {
     background-image: url(../../../public/assets/img/main-page_light.png);
-    background-size: 100%;
-    padding: 24px;
+    background-size: 1430px;
+    background-repeat: no-repeat;
+    background-position: bottom right 3px;
+    padding: 24px 24px 349px;
 
     &__container {
         max-width: 752px;

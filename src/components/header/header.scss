@@ -7,6 +7,8 @@
     z-index: 1;
 
     & .space {
+        display: flex;
+        justify-content: space-between;
         align-items: start;
         line-height: 1;
     }
@@ -18,4 +20,5 @@
     margin: 6px 0 0;
     font-weight: 700;
     max-width: 1055px;
+    min-height: 103px;
 }

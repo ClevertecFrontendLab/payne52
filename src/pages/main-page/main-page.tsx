@@ -1,9 +1,9 @@
 import { AntdContent } from '@components/content/content';
+import { AntdFooter } from '@components/footer/footer';
 import { AntdHeader } from '@components/header/header';
 import { AntdSider } from '@components/sider/sider';
 import { Layout } from 'antd';
 import { ConfigProvider } from 'antd';
-import { Footer } from 'antd/es/layout/layout';
 
 export const MainPage: React.FC = () => {
     return (
@@ -20,7 +20,7 @@ export const MainPage: React.FC = () => {
                 <Layout>
                     <AntdHeader />
                     <AntdContent />
-                    <Footer>Footer</Footer>
+                    <AntdFooter />
                 </Layout>
             </Layout>
         </ConfigProvider>
