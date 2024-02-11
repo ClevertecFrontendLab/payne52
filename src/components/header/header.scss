@@ -1,0 +1,21 @@
+@use '../../../public/assets/scss/variables' as *;
+
+.header {
+    height: auto;
+    padding: 16px 24px;
+    background-color: $primary-light-1;
+    z-index: 1;
+
+    & .space {
+        align-items: start;
+        line-height: 1;
+    }
+}
+.breadcrumbs {
+    margin-bottom: 8px;
+}
+.title.ant-typography {
+    margin: 6px 0 0;
+    font-weight: 700;
+    max-width: 1055px;
+}

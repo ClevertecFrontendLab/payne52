@@ -1,20 +1,19 @@
 import { SettingOutlined } from '@ant-design/icons';
-import { Colors } from '@constants/colors';
 import { Breadcrumb, Button, Space, Typography } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 
-import styles from './header.module.scss';
+import './header.scss';
 
 const { Title } = Typography;
 
-export const AntHeader: React.FC = () => {
+export const AntdHeader: React.FC = () => {
     return (
-        <Header style={{ background: Colors.Primary_light[1] }} className={styles.header}>
-            <Breadcrumb className={styles.breadcrumbs}>
+        <Header className='header'>
+            <Breadcrumb className='breadcrumbs'>
                 <Breadcrumb.Item>Главная</Breadcrumb.Item>
             </Breadcrumb>
-            <Space className={styles.space}>
-                <Title style={{ color: Colors.Character_light.Title_85 }} className={styles.title}>
+            <Space className='space'>
+                <Title className='title'>
                     Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
                     мечты!
                 </Title>

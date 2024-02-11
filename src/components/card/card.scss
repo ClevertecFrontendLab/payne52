@@ -1,0 +1,17 @@
+@use '../../../public/assets/scss/variables' as *;
+
+.card {
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    background: $character-light-primary-inverse;
+    border: 1px solid $character-light-dividers;
+    border-radius: 2px;
+
+    & .ant-card-body {
+        padding: 24px;
+    }
+    & .ant-card-head {
+        padding: 12px 24px;
+        font-weight: 500;
+        min-height: 0;
+    }
+}

@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { store } from '@redux/configure-store';
 
-import { IndexPage, MainPage } from './pages';
+import { MainPage } from './pages';
 
-import './fonts/fonts.scss';
+import '../public/assets/fonts/fonts.css';
 import 'normalize.css';
 import './index.scss';
 
@@ -18,8 +18,7 @@ root.render(
         <Provider store={store}>
             <HashRouter>
                 <Routes>
-                    <Route path='main' element={<MainPage />} />
-                    <Route path='/' element={<IndexPage />} />
+                    <Route path='/' element={<MainPage />} />
                 </Routes>
             </HashRouter>
         </Provider>

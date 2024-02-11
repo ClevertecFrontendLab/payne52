@@ -1,0 +1,49 @@
+@use '../../../public/assets/scss/variables' as *;
+
+.content {
+    background-image: url(../../../public/assets/img/main-page_light.png);
+    background-size: 100%;
+    padding: 24px;
+
+    &__container {
+        max-width: 752px;
+        gap: 16px;
+
+        & .cards {
+            display: block;
+        }
+    }
+    & .card {
+        &-top {
+            & .ant-typography {
+                color: $primary-light-9;
+                font-size: 16px;
+            }
+        }
+        &-tagline {
+            margin-top: 8px;
+
+            & .ant-typography {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+        &-item .ant-card-body {
+            padding: 12px 24px;
+            text-align: center;
+
+            & span {
+                color: $primary-light-6;
+            }
+            & svg path {
+                fill: $primary-light-6;
+            }
+        }
+        & .ant-card-head {
+            text-align: center;
+        }
+        & .ant-typography {
+            margin-bottom: 0;
+        }
+    }
+}

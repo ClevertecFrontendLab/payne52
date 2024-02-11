@@ -1,0 +1,105 @@
+@use '../../../public/assets/scss/variables' as *;
+
+.sider.ant-layout-sider {
+    width: 208px;
+    min-height: 80vh;
+    background-color: $character-light-primary-inverse;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+
+    & .logo-space {
+        width: 100%;
+        justify-content: center;
+        padding: 30px 0 50px;
+        overflow: hidden;
+
+        & svg {
+            height: 33px;
+        }
+    }
+
+    & ul.ant-menu {
+        border-right: 0;
+    }
+
+    & li.ant-menu-item {
+        height: 42px;
+        line-height: 42px;
+        margin: 0 0 16px;
+        padding: 0 16px !important;
+        width: 100%;
+        border-radius: 0;
+
+        & svg {
+            width: 15px;
+            height: auto;
+
+            & path {
+                fill: $primary-light-9;
+            }
+        }
+
+        &:last-child {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 0;
+            border-top: 1px solid $character-light-dividers;
+
+            & svg path {
+                fill: $neutral-gray-13;
+            }
+        }
+    }
+
+    &.ant-layout-sider-collapsed {
+        & li.ant-menu-item {
+            padding-left: 24px !important;
+        }
+    }
+
+    & .button_collapse {
+        font-size: 14px;
+        position: absolute;
+        right: -20px;
+        width: 20px;
+        height: 66px;
+        top: 50%;
+        margin-top: -33px;
+        border-radius: 0;
+        border: 0;
+        padding: 0;
+
+        &,
+        &:hover {
+            background-color: $character-light-primary-inverse;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            border-style: solid;
+        }
+        &::before {
+            top: -8px;
+            border-width: 8px 0 0 20px;
+            border-color: transparent transparent transparent $character-light-primary-inverse;
+        }
+        &::after {
+            bottom: -8px;
+            border-width: 8px 20px 0 0;
+            border-color: $character-light-primary-inverse transparent transparent transparent;
+        }
+
+        & svg {
+            width: 14px;
+            height: 14px;
+
+            & path {
+                fill: $neutral-gray-7;
+            }
+        }
+    }
+}
