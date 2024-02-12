@@ -36,6 +36,7 @@ export const AntdSider: React.FC = () => {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 className='button_collapse'
+                data-test-id={width > 768 ? 'sider-switch' : 'sider-switch-mobile'}
             />
             <Space className='logo-space'>
                 {width > 768 ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}

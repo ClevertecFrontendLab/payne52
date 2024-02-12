@@ -3,6 +3,7 @@
 .sider.ant-layout-sider {
     width: 208px;
     min-height: 100vh;
+    offset: initial;
     background-color: $character-light-primary-inverse;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
     -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
