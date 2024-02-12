@@ -17,7 +17,7 @@ export const AntdHeader: React.FC = () => {
                     Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
                     мечты!
                 </Title>
-                <Button type='text'>
+                <Button type='text' className='setups'>
                     <SettingOutlined />
                     Настройки
                 </Button>

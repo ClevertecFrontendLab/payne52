@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     CalendarTwoTone,
     HeartFilled,
@@ -8,6 +8,7 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
+import { useWindowResize } from '@hooks/useWindowResize';
 import { Button, Menu, Space } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 
@@ -19,13 +20,15 @@ import './sider.scss';
 
 export const AntdSider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const { width } = useWindowResize();
+
     return (
         <Sider
             trigger={null}
             collapsible
             collapsed={collapsed}
-            width='208'
-            collapsedWidth='64'
+            width={width > 768 ? '208' : '106'}
+            collapsedWidth={width > 768 ? '64' : '0'}
             className='sider'
         >
             <Button
@@ -34,7 +37,9 @@ export const AntdSider: React.FC = () => {
                 onClick={() => setCollapsed(!collapsed)}
                 className='button_collapse'
             />
-            <Space className='logo-space'>{collapsed ? <LogoMin /> : <Logo />}</Space>
+            <Space className='logo-space'>
+                {width > 768 ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}
+            </Space>
             <Menu
                 theme='light'
                 mode='inline'

@@ -7,12 +7,36 @@
     background-position: bottom right 3px;
     padding: 24px 24px 349px;
 
+    @media (max-width: 1200px) {
+        padding-bottom: 430px;
+        min-height: 1000px;
+        background-position: bottom 0px right 46%;
+        background-size: 1660px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 24px 16px 260px;
+    }
+
     &__container {
         max-width: 752px;
         gap: 16px;
 
         & .cards {
             display: block;
+
+            & .ant-row {
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                    gap: 8px;
+                }
+            }
+
+            & .ant-col {
+                @media (max-width: 768px) {
+                    max-width: 100%;
+                }
+            }
         }
     }
     & .card {
@@ -34,6 +58,12 @@
             padding: 12px 24px;
             text-align: center;
 
+            & .ant-btn {
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+
             & span {
                 color: $primary-light-6;
             }
@@ -42,7 +72,17 @@
             }
         }
         & .ant-card-head {
-            text-align: center;
+            @media (max-width: 1200px) {
+                font-weight: 400;
+            }
+
+            @media (max-width: 768px) {
+                text-align: center;
+            }
+
+            & .ant-card-head-title {
+                white-space: wrap;
+            }
         }
         & .ant-typography {
             margin-bottom: 0;

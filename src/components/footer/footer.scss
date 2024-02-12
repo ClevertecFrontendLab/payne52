@@ -6,11 +6,34 @@
     margin-top: -283px;
     padding: 0 24px 42px;
 
+    @media (max-width: 1200px) {
+        height: 324px;
+        margin-top: -324px;
+    }
+
+    @media (max-width: 768px) {
+        height: 190px;
+        margin-top: -190px;
+        padding: 0 16px 42px;
+        text-align: center;
+    }
+
     & .space {
         display: flex;
         height: 100%;
         align-items: flex-end;
         justify-content: space-between;
+
+        @media (max-width: 768px) {
+            flex-direction: column-reverse;
+            gap: 24px;
+        }
+
+        & .ant-space-item {
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
     }
     & .reviews {
         padding: 0px 15px;
@@ -27,6 +50,11 @@
             & .ant-btn {
                 width: 120px;
                 padding: unset;
+                border-radius: 0;
+
+                @media (max-width: 768px) {
+                    width: 50%;
+                }
             }
         }
         & .ant-card-meta {
