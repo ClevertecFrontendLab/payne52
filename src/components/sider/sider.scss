@@ -1,0 +1,171 @@
+@use '../../../public/assets/scss/variables' as *;
+
+.sider.ant-layout-sider {
+    width: 208px;
+    min-height: 100vh;
+    offset: initial;
+    background-color: $character-light-primary-inverse;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+
+    @media (max-width: 768px) {
+        position: fixed;
+        z-index: 2;
+        height: 100vh;
+    }
+
+    & .logo-space {
+        width: 100%;
+        justify-content: center;
+        margin: 30px 0 50px;
+        overflow: hidden;
+        height: 64px;
+
+        @media (max-width: 768px) {
+            height: auto;
+            margin: 16px 0 32px;
+        }
+
+        & svg {
+            height: 33px;
+
+            @media (max-width: 768px) {
+                width: 72px;
+                height: auto;
+            }
+        }
+    }
+
+    & ul.ant-menu {
+        border-right: 0;
+    }
+
+    & li.ant-menu-item {
+        height: 42px;
+        line-height: 42px;
+        margin: 0 0 16px;
+        padding: 0 16px !important;
+        width: 100%;
+        border-radius: 0;
+
+        @media (max-width: 768px) {
+            padding: 0 8px !important;
+            margin-bottom: 8px;
+        }
+
+        & .anticon {
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+
+        & .ant-menu-title-content {
+            @media (max-width: 768px) {
+                margin: 0;
+            }
+        }
+
+        & svg {
+            width: 15px;
+            height: auto;
+
+            & path {
+                fill: $primary-light-9;
+            }
+        }
+
+        &:last-child {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 0;
+            border-top: 1px solid $character-light-dividers;
+
+            & .ant-menu-title-content {
+                margin-left: 25px;
+
+                @media (max-width: 768px) {
+                    margin-left: 0;
+                    text-align: center;
+                }
+            }
+            & svg path {
+                fill: $neutral-gray-13;
+            }
+        }
+    }
+
+    &.ant-layout-sider-collapsed {
+        & li.ant-menu-item {
+            padding-left: 24px !important;
+
+            &:last-child {
+                @media (max-width: 768px) {
+                    padding: 0 !important;
+                }
+            }
+        }
+    }
+
+    & .button_collapse {
+        font-size: 14px;
+        position: absolute;
+        right: -20px;
+        width: 20px;
+        height: 50px;
+        top: 50%;
+        margin-top: -25px;
+        border-radius: 0;
+        border: 0;
+        padding: 0;
+        outline: none;
+
+        @media (max-width: 768px) {
+            top: 34px;
+            right: -32px;
+            margin: 0;
+            width: 32px;
+            height: 36px;
+        }
+
+        &,
+        &:hover {
+            background-color: $character-light-primary-inverse;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            border-style: solid;
+        }
+        &::before {
+            top: -8px;
+            border-width: 8px 0 0 20px;
+            border-color: transparent transparent transparent $character-light-primary-inverse;
+            @media (max-width: 768px) {
+                top: -6px;
+                border-width: 6px 0 0 32px;
+            }
+        }
+        &::after {
+            bottom: -8px;
+            border-width: 8px 20px 0 0;
+            border-color: $character-light-primary-inverse transparent transparent transparent;
+            @media (max-width: 768px) {
+                bottom: -6px;
+                border-width: 6px 32px 0 0;
+            }
+        }
+
+        & svg {
+            width: 14px;
+            height: 14px;
+
+            & path {
+                fill: $neutral-gray-7;
+            }
+        }
+    }
+}
