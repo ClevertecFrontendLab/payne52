@@ -1,10 +1,11 @@
-@use '../../../public/assets/scss/variables' as *;
+@use '../../assets/scss/variables' as *;
 
-.card {
+div.card {
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
     background: $character-light-primary-inverse;
-    border-radius: 2px;
-    border: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     & .ant-card-body {
         padding: 24px;
@@ -17,6 +18,12 @@
         padding: 12px 24px;
         font-weight: 500;
         min-height: 0;
+        flex: 1;
+
+        & .ant-card-head-title {
+            padding: 0;
+            color: $character-light-title-85;
+        }
     }
     &-meta {
         & .ant-card-body {

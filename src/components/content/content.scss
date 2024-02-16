@@ -1,16 +1,17 @@
-@use '../../../public/assets/scss/variables' as *;
+@use '../../assets/scss/variables' as *;
 
-.content {
-    background-image: url(../../../public/assets/img/main-page_light.jpg);
+main.content {
+    background-image: url(../../assets/img/main-page_light.jpg);
     background-size: 1430px;
     background-repeat: no-repeat;
-    background-position: bottom right 3px;
+    background-position: bottom right;
     padding: 24px 24px 349px;
 
     @media (max-width: 1200px) {
         padding-bottom: 430px;
         min-height: 1000px;
         background-position: bottom 0px right 46%;
+        background-attachment: fixed;
         background-size: 1660px;
     }
 
@@ -18,7 +19,7 @@
         padding: 24px 16px 260px;
     }
 
-    &__container {
+    & .container {
         max-width: 752px;
         gap: 16px;
 

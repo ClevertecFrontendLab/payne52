@@ -1,0 +1,1 @@
+export { AntdCard } from './card';

@@ -1,0 +1,14 @@
+@use '../../assets/scss/variables' as *;
+
+.form-item.ant-form-item {
+    margin-bottom: 32px;
+
+    & [role='alert'] > div {
+        font-size: 12px;
+        color: $character-light-secondary-45;
+
+        &.ant-form-item-explain-error {
+            color: $character-light-error;
+        }
+    }
+}

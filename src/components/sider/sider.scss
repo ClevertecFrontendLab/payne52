@@ -1,7 +1,7 @@
-@use '../../../public/assets/scss/variables' as *;
+@use '../../assets/scss/variables' as *;
 
 .sider.ant-layout-sider {
-    width: 208px;
+    //width: 208px;
     min-height: 100vh;
     offset: initial;
     background-color: $character-light-primary-inverse;
@@ -60,6 +60,8 @@
         }
 
         & .ant-menu-title-content {
+            color: $character-light-title-85;
+
             @media (max-width: 768px) {
                 margin: 0;
             }
@@ -139,6 +141,10 @@
             position: absolute;
             left: 0;
             border-style: solid;
+            height: 0;
+            width: 0;
+            background: none;
+            opacity: 1;
         }
         &::before {
             top: -8px;

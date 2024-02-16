@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     CalendarTwoTone,
     HeartFilled,
@@ -8,27 +8,31 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
-import { useWindowResize } from '@hooks/useWindowResize';
 import { Button, Menu, Space } from 'antd';
+import { Grid } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 
-import Exit from '../../../public/assets/svg/exit.svg?react';
-import LogoMin from '../../../public/assets/svg/logo/logo.min.svg?react';
-import Logo from '../../../public/assets/svg/logo/logo.svg?react';
+import Exit from '../../assets/svg/exit.svg?react';
+import LogoMin from '../../assets/svg/logo/logo.min.svg?react';
+import Logo from '../../assets/svg/logo/logo.svg?react';
+const { useBreakpoint } = Grid;
+
+import { Link } from 'react-router-dom';
+import { Paths } from '@constants/paths';
 
 import './sider.scss';
 
 export const AntdSider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const { width } = useWindowResize();
+    const screens = useBreakpoint();
 
     return (
         <Sider
             trigger={null}
             collapsible
             collapsed={collapsed}
-            width={width > 768 ? '208' : '106'}
-            collapsedWidth={width > 768 ? '64' : '0'}
+            width={screens.md ? '208' : '106'}
+            collapsedWidth={screens.md ? '64' : '0'}
             className='sider'
         >
             <Button
@@ -36,10 +40,10 @@ export const AntdSider: React.FC = () => {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 className='button_collapse'
-                data-test-id={width > 768 ? 'sider-switch' : 'sider-switch-mobile'}
+                data-test-id={screens.md ? 'sider-switch' : 'sider-switch-mobile'}
             />
             <Space className='logo-space'>
-                {width > 768 ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}
+                {screens.md ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}
             </Space>
             <Menu
                 theme='light'
@@ -68,7 +72,7 @@ export const AntdSider: React.FC = () => {
                     {
                         key: '5',
                         icon: <Icon component={Exit} />,
-                        label: 'Выход',
+                        label: <Link to={Paths.AUTH}>Выход</Link>,
                     },
                 ]}
             />

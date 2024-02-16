@@ -1,6 +1,6 @@
-@use '../../../public/assets/scss/variables' as *;
+@use '../../assets/scss/variables' as *;
 
-.footer {
+footer.footer {
     background: none;
     height: 283px;
     margin-top: -283px;
@@ -51,6 +51,7 @@
                 width: 120px;
                 padding: unset;
                 border-radius: 0;
+                color: $character-light-title-85;
 
                 @media (max-width: 768px) {
                     width: 50%;
