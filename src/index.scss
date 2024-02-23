@@ -1,8 +1,11 @@
-@use './assets/scss/variables' as *;
+@use '@assets/scss/variables' as *;
 
 .ant-layout {
     & .ant-typography {
         color: $character-light-title-85;
+    }
+    & h3.ant-typography {
+        font-weight: 500;
     }
 }
 

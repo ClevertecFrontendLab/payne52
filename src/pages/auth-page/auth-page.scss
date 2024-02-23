@@ -1,7 +1,7 @@
 @use '../../assets/scss/variables' as *;
 
-section.login-page {
-    background: url(../../assets/img/enter-page_light.jpg);
+section.auth-page {
+    background: url(@assets/img/enter-page_light.jpg);
     height: 100vh;
     position: relative;
 
@@ -14,12 +14,13 @@ section.login-page {
     }
 
     & .content-block {
-        position: relative;
-        z-index: 1;
         width: 540px;
-        height: 686px;
         background-color: $character-light-primary-inverse;
-        padding: 65px 85px;
+        position: initial;
+
+        & .ant-card-body {
+            padding: 65px 85px;
+        }
 
         & .logo-space {
             display: flex;
@@ -59,14 +60,13 @@ section.login-page {
                     color: $primary-light-6;
                 }
             }
-
-            & .button {
-                width: 100%;
-                line-height: 40px;
-                height: 40px;
-                padding-top: 0;
-                padding-bottom: 0;
-            }
         }
     }
+}
+.auth-page .button {
+    width: 100%;
+    line-height: 40px;
+    height: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
 }

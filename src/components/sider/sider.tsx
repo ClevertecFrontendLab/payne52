@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     CalendarTwoTone,
     HeartFilled,
@@ -17,8 +17,9 @@ import LogoMin from '../../assets/svg/logo/logo.min.svg?react';
 import Logo from '../../assets/svg/logo/logo.svg?react';
 const { useBreakpoint } = Grid;
 
-import { Link } from 'react-router-dom';
-import { Paths } from '@constants/paths';
+import { LogoutFunc } from '@utils/logout';
+
+import { AntdButton } from '..';
 
 import './sider.scss';
 
@@ -72,7 +73,11 @@ export const AntdSider: React.FC = () => {
                     {
                         key: '5',
                         icon: <Icon component={Exit} />,
-                        label: <Link to={Paths.AUTH}>Выход</Link>,
+                        label: (
+                            <AntdButton type='text' onClick={LogoutFunc}>
+                                Выход
+                            </AntdButton>
+                        ),
                     },
                 ]}
             />
