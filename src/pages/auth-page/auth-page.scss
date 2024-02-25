@@ -16,10 +16,17 @@ section.auth-page {
     & .content-block {
         width: 540px;
         background-color: $character-light-primary-inverse;
-        position: initial;
+
+        @media (max-width: 768px) {
+            width: 330px;
+        }
 
         & .ant-card-body {
             padding: 65px 85px;
+
+            @media (max-width: 768px) {
+                padding: 32px 16px;
+            }
         }
 
         & .logo-space {
@@ -29,11 +36,20 @@ section.auth-page {
             & .logo {
                 width: 310px;
                 height: auto;
+
+                @media (max-width: 768px) {
+                    width: auto;
+                    max-width: 200px;
+                }
             }
         }
 
         & .tabs {
             margin-top: 48px;
+
+            @media (max-width: 768px) {
+                margin-top: 32px;
+            }
 
             & .ant-tabs-nav {
                 margin-bottom: 24px;

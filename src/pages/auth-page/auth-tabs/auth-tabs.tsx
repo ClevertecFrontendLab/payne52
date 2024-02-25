@@ -3,7 +3,7 @@ import Logo from '@assets/svg/logo/logo.svg?react';
 import { Paths } from '@constants/paths';
 import { Space, Tabs } from 'antd';
 
-import { LoginForm, RegisterForm } from './form';
+import { LoginForm, RegisterForm } from '.';
 
 import './auth-tabs.scss';
 

@@ -1,0 +1,7 @@
+.google-button {
+    & svg {
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+}

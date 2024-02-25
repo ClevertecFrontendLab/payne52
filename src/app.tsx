@@ -2,11 +2,17 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthLayout } from '@components/layout/AuthLayout';
 import { Paths } from '@constants/paths';
 import {
+    ChangePassword,
+    ChangePasswordError,
+    ChangePasswordSuccess,
+    CheckEmailError,
+    CheckEmailErrorUNE,
+    ConfirmEmail,
     LoginError,
     RegisterError,
     RegisterErrorUserExist,
     RegisterSuccess,
-} from '@pages/auth-page/modal';
+} from '@pages/auth-page/results';
 import { selectIsAuthorized } from '@redux/authSlice';
 import { AccessToLocation } from '@utils/access-to-location';
 
@@ -52,6 +58,24 @@ const App = () => {
                                 <Route
                                     path={Paths.REGISTER_SUCCESS}
                                     element={<RegisterSuccess />}
+                                />
+                                <Route
+                                    path={Paths.CHECK_EMAIL_ERROR}
+                                    element={<CheckEmailError />}
+                                />
+                                <Route
+                                    path={Paths.CHECK_EMAIL_ERROR_UNE}
+                                    element={<CheckEmailErrorUNE />}
+                                />
+                                <Route path={Paths.CONFIRM_EMAIL} element={<ConfirmEmail />} />
+                                <Route path={Paths.CHANGE_PASSWORD} element={<ChangePassword />} />
+                                <Route
+                                    path={Paths.CHANGE_PASSWORD_ERROR}
+                                    element={<ChangePasswordError />}
+                                />
+                                <Route
+                                    path={Paths.CHANGE_PASSWORD_SUCCESS}
+                                    element={<ChangePasswordSuccess />}
                                 />
                             </>
                         )}

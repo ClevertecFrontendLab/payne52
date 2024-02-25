@@ -1,15 +1,34 @@
 import { api } from './api';
 
+export type UserEmailData = {
+    email: string;
+};
+
+export interface UserData extends UserEmailData {
+    password: string;
+}
+
+export interface UserConfirmEmailData extends UserEmailData {
+    code: string;
+}
+
+export type UserNewPasswordData = {
+    password: string;
+    confirmPassword: string;
+};
+
 export type ResponseLoginData = {
     accessToken: string;
 };
 
 export type ResponseRegisterData = Record<string, never>;
 
-export type UserData = {
+export type ResponseEmailData = {
     email: string;
-    password: string;
+    message: string;
 };
+
+export type ResponseChangePasswordData = Omit<ResponseEmailData, 'email'>;
 
 export const authApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -27,11 +46,40 @@ export const authApi = api.injectEndpoints({
                 body: userData,
             }),
         }),
+        checkEmail: builder.mutation<ResponseEmailData, UserEmailData>({
+            query: (userData) => ({
+                url: '/auth/check-email',
+                method: 'POST',
+                body: userData,
+            }),
+        }),
+        confirmEmail: builder.mutation<ResponseEmailData, UserConfirmEmailData>({
+            query: (userData) => ({
+                url: '/auth/confirm-email',
+                method: 'POST',
+                body: userData,
+                credentials: 'include',
+            }),
+        }),
+        changePassword: builder.mutation<ResponseChangePasswordData, UserNewPasswordData>({
+            query: (userData) => ({
+                url: '/auth/change-password',
+                method: 'POST',
+                body: userData,
+                credentials: 'include',
+            }),
+        }),
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const {
+    useLoginMutation,
+    useRegisterMutation,
+    useCheckEmailMutation,
+    useConfirmEmailMutation,
+    useChangePasswordMutation,
+} = authApi;
 
 export const {
-    endpoints: { login, register },
+    endpoints: { login, register, checkEmail, confirmEmail, changePassword },
 } = authApi;

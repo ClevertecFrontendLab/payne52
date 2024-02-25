@@ -1,7 +1,8 @@
 .auth-tabs {
     height: 560px;
 
-    & .ant-tabs-content {
-        position: initial;
+    @media (max-width: 768px) {
+        height: auto;
+        min-height: 490px;
     }
 }

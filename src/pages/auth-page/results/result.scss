@@ -1,0 +1,36 @@
+@use '@assets/scss/variables' as *;
+
+.ant-result.result {
+    padding: 0;
+
+    & * {
+        line-height: 1.3;
+    }
+    & .ant-result-title {
+        color: $character-light-title-85;
+        font-weight: 500;
+    }
+    & .ant-result-subtitle {
+        color: $character-light-secondary-45;
+    }
+
+    &.check-email-error {
+        margin: 0px -53px -0px;
+
+        @media (max-width: 768px) {
+            margin: 32px 0 24px;
+        }
+
+        & .button {
+            width: auto;
+        }
+    }
+
+    &.check-email-error-une {
+        margin: 0 -20px 0;
+
+        @media (max-width: 768px) {
+            margin: 32px 0 24px;
+        }
+    }
+}

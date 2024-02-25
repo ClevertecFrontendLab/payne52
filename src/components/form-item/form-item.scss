@@ -11,4 +11,8 @@
             color: $character-light-error;
         }
     }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

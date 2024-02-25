@@ -1,0 +1,34 @@
+@use '@assets/scss/variables' as *;
+
+#login .form-item.form-item-password {
+    margin-bottom: 30px;
+}
+.form-item.form-item-submit {
+    margin-bottom: 16px;
+}
+.space-form {
+    width: 100%;
+    justify-content: space-between;
+    margin: 24px 0;
+
+    & .form-item {
+        margin: 0;
+
+        &.forget-password button.button {
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.3;
+            height: auto;
+            color: $primary-light-6;
+            background: none;
+
+            &[disabled] {
+                color: $character-light-disable-25;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+    }
+}

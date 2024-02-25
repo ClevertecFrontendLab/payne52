@@ -1,0 +1,27 @@
+@use '@assets/scss/variables' as *;
+
+.ant-result.result {
+    & .verification {
+        margin: 0;
+        line-height: 40px;
+
+        & .inputs {
+            height: auto;
+            margin-bottom: 24px;
+
+            .ant-input {
+                height: 40px;
+                width: 40px;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    & .ant-typography-secondary {
+        margin-bottom: 0;
+        color: $character-light-secondary-45;
+    }
+}
