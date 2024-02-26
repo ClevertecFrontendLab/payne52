@@ -62,10 +62,7 @@ export const LoginForm = () => {
     const checkEmail = async (data: UserEmailData) => {
         try {
             await trackPromise(checkUserEmail(data).unwrap());
-            history.push(
-                { pathname: Paths.CONFIRM_EMAIL },
-                { access: true, email: form.getFieldValue('email') },
-            );
+            history.push({ pathname: Paths.CONFIRM_EMAIL }, { access: true, email: data.email });
         } catch (err) {
             if (
                 isErrorWithMessage(err) &&
@@ -74,12 +71,12 @@ export const LoginForm = () => {
             ) {
                 history.push(
                     { pathname: Paths.CHECK_EMAIL_ERROR_UNE },
-                    { access: true, email: form.getFieldValue('email') },
+                    { access: true, email: data.email },
                 );
             } else {
                 history.push(
                     { pathname: Paths.CHECK_EMAIL_ERROR },
-                    { access: true, email: form.getFieldValue('email') },
+                    { access: true, email: data.email },
                 );
             }
         }

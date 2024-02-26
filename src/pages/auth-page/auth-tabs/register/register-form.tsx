@@ -42,10 +42,7 @@ export const RegisterForm = () => {
             if (isErrorWithMessage(err) && err.status == 409) {
                 history.push({ pathname: Paths.REGISTER_ERROR_USER_EXIST }, { access: true });
             } else {
-                history.push(
-                    { pathname: Paths.REGISTER_ERROR },
-                    { access: true, fields: form.getFieldsValue() },
-                );
+                history.push({ pathname: Paths.REGISTER_ERROR }, { access: true, fields: data });
             }
         }
     };
