@@ -23,6 +23,7 @@ export const ChangePasswordError = () => {
                             { fields: fields, retry: true, access: true },
                         )
                     }
+                    data-test-id='change-retry-button'
                 >
                     Повторить
                 </AntdButton>

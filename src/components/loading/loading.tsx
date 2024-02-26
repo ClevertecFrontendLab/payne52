@@ -14,7 +14,7 @@ export const Loading = ({ children, status }: { children: JSX.Element; status: b
         return (
             <>
                 {children}
-                <div className='loading'>
+                <div className='loading' data-test-id='loader'>
                     <Lottie animationData={loader} className='loader' style={style} />
                 </div>
             </>

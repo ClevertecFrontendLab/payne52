@@ -46,9 +46,9 @@ export const ChangePassword = () => {
         <div className='change-password'>
             <Typography.Title level={3}>Восстановление аккауанта</Typography.Title>
             <Form form={form} name='change-password' onFinish={changePass}>
-                <PasswordInput message />
-                <ConfirmPasswordInput />
-                <SubmitButton>Сохранить</SubmitButton>
+                <PasswordInput message dataTestId='change-password' />
+                <ConfirmPasswordInput dataTestId='change-confirm-password' />
+                <SubmitButton dataTestId='change-submit-button'>Сохранить</SubmitButton>
             </Form>
         </div>
     );

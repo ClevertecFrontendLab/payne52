@@ -10,7 +10,11 @@ export const RegisterSuccess = () => (
         title='Регистрация успешна'
         subTitle='Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль.'
         extra={
-            <AntdButton type='primary' onClick={() => history.replace(Paths.AUTH)}>
+            <AntdButton
+                type='primary'
+                onClick={() => history.replace(Paths.AUTH)}
+                data-test-id='registration-enter-button'
+            >
                 Войти
             </AntdButton>
         }

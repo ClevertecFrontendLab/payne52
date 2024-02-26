@@ -6,7 +6,6 @@ import { history } from '@redux/configure-store';
 import { UserData, useRegisterMutation } from '@services/auth';
 import { isErrorWithMessage } from '@utils/is-error-with-message';
 import { Form } from 'antd';
-import { ValidateStatus } from 'antd/es/form/FormItem';
 
 import { ConfirmPasswordInput, EmailInput, GoogleButton, PasswordInput, SubmitButton } from '.';
 
@@ -21,14 +20,12 @@ export const RegisterForm = () => {
 
     const [, forceUpdate] = useState({});
     const [disabled, setDisabled] = useState(true);
-    const [emailFieldStatus, setEmailFieldStatus] = useState<ValidateStatus | undefined>('');
 
     const handleChangeForm = () => {
         setDisabled(
             !form.isFieldsTouched(true) ||
                 !!form.getFieldsError().filter(({ errors }) => errors.length).length,
         );
-        setEmailFieldStatus(undefined);
     };
 
     useEffect(() => {
@@ -42,11 +39,8 @@ export const RegisterForm = () => {
             await trackPromise(registerUser(data).unwrap());
             history.replace({ pathname: Paths.REGISTER_SUCCESS }, { access: true });
         } catch (err) {
-            if (isErrorWithMessage(err) && err.data.statusCode == 409) {
-                history.push(
-                    { pathname: Paths.REGISTER_ERROR_USER_EXIST },
-                    { access: true, fields: form.getFieldsValue() },
-                );
+            if (isErrorWithMessage(err) && err.status == 409) {
+                history.push({ pathname: Paths.REGISTER_ERROR_USER_EXIST }, { access: true });
             } else {
                 history.push(
                     { pathname: Paths.REGISTER_ERROR },
@@ -57,13 +51,8 @@ export const RegisterForm = () => {
     };
 
     useEffect(() => {
-        if (fields) {
-            form.setFieldsValue(fields);
-            if (retry) {
-                register(fields);
-            } else {
-                setEmailFieldStatus('error');
-            }
+        if (retry) {
+            register(fields);
         }
     }, []);
 
@@ -75,10 +64,12 @@ export const RegisterForm = () => {
             onFinish={register}
             onFieldsChange={handleChangeForm}
         >
-            <EmailInput validateStatus={emailFieldStatus} />
-            <PasswordInput message />
-            <ConfirmPasswordInput />
-            <SubmitButton disabled={disabled}>Регистрация</SubmitButton>
+            <EmailInput dataTestId='registration-email' />
+            <PasswordInput message dataTestId='registration-password' />
+            <ConfirmPasswordInput dataTestId='registration-confirm-password' />
+            <SubmitButton disabled={disabled} dataTestId='registration-submit-button'>
+                Регистрация
+            </SubmitButton>
             <GoogleButton>Регистрация через Google</GoogleButton>
         </Form>
     );

@@ -4,9 +4,10 @@ import { AntdInputPassword } from '@components/input';
 type Props = {
     hasFeedback?: boolean;
     message?: boolean;
+    dataTestId?: string;
 };
 
-export const PasswordInput = ({ hasFeedback, message }: Props) => (
+export const PasswordInput = ({ hasFeedback, message, dataTestId }: Props) => (
     <AntdFormItem
         name='password'
         className='form-item form-item-password'
@@ -29,11 +30,11 @@ export const PasswordInput = ({ hasFeedback, message }: Props) => (
         help={message && 'Пароль не менее 8 символов, с заглавной буквой и цифрой'}
         hasFeedback={hasFeedback}
     >
-        <AntdInputPassword placeholder='Пароль' />
+        <AntdInputPassword placeholder='Пароль' data-test-id={dataTestId} />
     </AntdFormItem>
 );
 
-export const ConfirmPasswordInput = ({ hasFeedback }: Props) => (
+export const ConfirmPasswordInput = ({ hasFeedback, dataTestId }: Props) => (
     <AntdFormItem
         name='confirmPassword'
         dependencies={['password']}
@@ -53,6 +54,6 @@ export const ConfirmPasswordInput = ({ hasFeedback }: Props) => (
         ]}
         hasFeedback={hasFeedback}
     >
-        <AntdInputPassword placeholder='Повторите пароль' />
+        <AntdInputPassword placeholder='Повторите пароль' data-test-id={dataTestId} />
     </AntdFormItem>
 );

@@ -10,7 +10,11 @@ export const ChangePasswordSuccess = () => (
         title='Пароль успешно изменен'
         subTitle='Теперь можно войти в аккаунт, используя свой логин и новый пароль'
         extra={
-            <AntdButton type='primary' onClick={() => history.push({ pathname: Paths.AUTH })}>
+            <AntdButton
+                type='primary'
+                onClick={() => history.push({ pathname: Paths.AUTH })}
+                data-test-id='change-entry-button'
+            >
                 Вход
             </AntdButton>
         }

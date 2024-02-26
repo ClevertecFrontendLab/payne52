@@ -10,7 +10,11 @@ export const LoginError = () => (
         title='Вход не выполнен'
         subTitle='Что-то пошло не так. Попробуйте еще раз'
         extra={
-            <AntdButton type='primary' onClick={() => history.replace(Paths.AUTH)}>
+            <AntdButton
+                type='primary'
+                onClick={() => history.replace(Paths.AUTH)}
+                data-test-id='login-retry-button'
+            >
                 Повторить
             </AntdButton>
         }

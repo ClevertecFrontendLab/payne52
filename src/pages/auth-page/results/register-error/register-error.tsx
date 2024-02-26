@@ -20,6 +20,7 @@ export const RegisterError = () => {
                     onClick={() =>
                         history.push({ pathname: Paths.REGISTER }, { fields: fields, retry: true })
                     }
+                    data-test-id='registration-retry-button'
                 >
                     Повторить
                 </AntdButton>

@@ -61,6 +61,7 @@ export const ConfirmEmail = () => {
                                 character: `ant-input ${fieldStatus}`,
                                 characterSelected: 'ant-input-focused',
                             }}
+                            inputProps={{ 'data-test-id': 'verification-input' }}
                         />
                     </Space>
                     <Paragraph type='secondary'>Не пришло письмо? Проверьте папку Спам.</Paragraph>

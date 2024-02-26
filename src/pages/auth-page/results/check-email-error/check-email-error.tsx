@@ -20,6 +20,7 @@ export const CheckEmailError = () => {
                     onClick={() =>
                         history.replace({ pathname: Paths.AUTH }, { email: email, retry: true })
                     }
+                    data-test-id='check-back-button'
                 >
                     Назад
                 </AntdButton>

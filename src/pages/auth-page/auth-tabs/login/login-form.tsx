@@ -7,7 +7,6 @@ import { useCheckEmailMutation, useLoginMutation, UserData, UserEmailData } from
 import { isErrorWithMessage } from '@utils/is-error-with-message';
 import { RememberMe } from '@utils/rememberMe';
 import { Form, Space } from 'antd';
-import { ValidateStatus } from 'antd/es/form/FormItem';
 
 import {
     EmailInput,
@@ -27,12 +26,10 @@ export const LoginForm = () => {
 
     const [form] = Form.useForm();
     const [disabled, setDisabled] = useState(false);
-    const [emailFieldStatus, setEmailFieldStatus] = useState<ValidateStatus | undefined>('');
 
     const handleClickButton = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         if (!form.getFieldValue('email') || form.getFieldError('email').length) {
-            setEmailFieldStatus('error');
             setDisabled(true);
         } else {
             checkEmail({ email: form.getFieldValue('email') });
@@ -41,7 +38,6 @@ export const LoginForm = () => {
 
     const handleChangeFields = () => {
         setDisabled(Boolean(form.getFieldError('email').length));
-        setEmailFieldStatus(undefined);
     };
 
     const [loginUser] = useLoginMutation();
@@ -66,12 +62,16 @@ export const LoginForm = () => {
     const checkEmail = async (data: UserEmailData) => {
         try {
             await trackPromise(checkUserEmail(data).unwrap());
-            history.replace(
+            history.push(
                 { pathname: Paths.CONFIRM_EMAIL },
                 { access: true, email: form.getFieldValue('email') },
             );
         } catch (err) {
-            if (isErrorWithMessage(err) && err.data.statusCode == 404) {
+            if (
+                isErrorWithMessage(err) &&
+                err.status == 404 &&
+                (err.data.message as string) == 'Email не найден'
+            ) {
                 history.push(
                     { pathname: Paths.CHECK_EMAIL_ERROR_UNE },
                     { access: true, email: form.getFieldValue('email') },
@@ -86,14 +86,8 @@ export const LoginForm = () => {
     };
 
     useEffect(() => {
-        if (email) {
-            form.setFieldValue('email', email);
-            if (retry) {
-                checkEmail({ email: form.getFieldValue('email') });
-            } else {
-                setEmailFieldStatus('error');
-                setDisabled(true);
-            }
+        if (retry) {
+            checkEmail({ email: email });
         }
     }, []);
 
@@ -105,14 +99,18 @@ export const LoginForm = () => {
             onFinish={login}
             onFieldsChange={handleChangeFields}
         >
-            <EmailInput validateStatus={emailFieldStatus} />
-            <PasswordInput />
+            <EmailInput dataTestId='login-email' />
+            <PasswordInput dataTestId='login-password' />
             <Space className='space-form'>
-                <RememberCheckbox />
-                <ForgetPasswordButton disabled={disabled} callback={handleClickButton} />
+                <RememberCheckbox dataTestId='login-remember' />
+                <ForgetPasswordButton
+                    disabled={disabled}
+                    callback={handleClickButton}
+                    dataTestId='login-forgot-button'
+                />
             </Space>
 
-            <SubmitButton>Войти</SubmitButton>
+            <SubmitButton dataTestId='login-submit-button'>Войти</SubmitButton>
             <GoogleButton>Войти через Google</GoogleButton>
         </Form>
     );
