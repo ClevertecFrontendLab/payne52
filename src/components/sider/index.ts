@@ -1,0 +1,1 @@
+export { AntdSider } from './sider';

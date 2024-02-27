@@ -1,0 +1,16 @@
+@use '../../assets/scss/variables' as *;
+
+.button.ant-btn-text {
+    color: $character-light-title-85;
+}
+
+.button.ant-btn-primary {
+    background: $primary-light-6;
+
+    & span {
+        color: $character-light-primary-inverse;
+    }
+}
+.button.ant-btn-primary[disabled] span {
+    color: $character-light-disable-25;
+}

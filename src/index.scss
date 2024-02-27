@@ -1,9 +1,12 @@
-@use '../public/assets/scss/variables' as *;
+@use '@assets/scss/variables' as *;
 
 .ant-layout {
-    & *,
-    & .ant-typography {
+    & .ant-typography,
+    & .ant-input {
         color: $character-light-title-85;
+    }
+    & h3.ant-typography {
+        font-weight: 500;
     }
 }
 
@@ -13,6 +16,8 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #404040;
+    font-family: $font-family;
+    line-height: 1.3;
 }
 .app {
     max-width: 1440px;

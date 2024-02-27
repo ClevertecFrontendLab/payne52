@@ -1,0 +1,1 @@
+export { AntdFooter } from './footer';

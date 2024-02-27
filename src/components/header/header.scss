@@ -1,6 +1,6 @@
-@use '../../../public/assets/scss/variables' as *;
+@use '../../assets/scss/variables' as *;
 
-.header {
+header.header {
     height: auto;
     padding: 16px 24px;
     background-color: $primary-light-1;

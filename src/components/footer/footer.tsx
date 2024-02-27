@@ -5,28 +5,26 @@ import { Footer } from 'antd/es/layout/layout';
 
 import './footer.scss';
 
-export const AntdFooter: React.FC = () => {
-    return (
-        <Footer className='footer'>
-            <Space className='space'>
-                <Button type='text' className='reviews'>
-                    Смотреть отзывы
+export const AntdFooter: React.FC = () => (
+    <Footer className='footer'>
+        <Space className='space'>
+            <Button type='text' className='reviews'>
+                Смотреть отзывы
+            </Button>
+            <AntdCard
+                title='Скачать на телефон'
+                description='Доступно в PRO-тарифе'
+                className='card-item'
+            >
+                <Button type='text'>
+                    <AndroidFilled />
+                    Android OS
                 </Button>
-                <AntdCard
-                    title='Скачать на телефон'
-                    description='Доступно в PRO-тарифе'
-                    className='card-item'
-                >
-                    <Button type='text'>
-                        <AndroidFilled />
-                        Android OS
-                    </Button>
-                    <Button type='text'>
-                        <AppleFilled />
-                        Apple iOS
-                    </Button>
-                </AntdCard>
-            </Space>
-        </Footer>
-    );
-};
+                <Button type='text'>
+                    <AppleFilled />
+                    Apple iOS
+                </Button>
+            </AntdCard>
+        </Space>
+    </Footer>
+);

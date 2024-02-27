@@ -1,0 +1,16 @@
+export const Paths = {
+    HOME: '/',
+    MAIN: '/main',
+    AUTH: '/auth',
+    LOGIN_ERROR: '/result/error-login',
+    REGISTER: '/auth/registration',
+    REGISTER_ERROR: '/result/error',
+    REGISTER_ERROR_USER_EXIST: '/result/error-user-exist',
+    REGISTER_SUCCESS: '/result/success',
+    CHECK_EMAIL_ERROR: '/result/error-check-email',
+    CHECK_EMAIL_ERROR_UNE: '/result/error-check-email-no-exist',
+    CONFIRM_EMAIL: '/auth/confirm-email',
+    CHANGE_PASSWORD: '/auth/change-password',
+    CHANGE_PASSWORD_ERROR: '/result/error-change-password',
+    CHANGE_PASSWORD_SUCCESS: '/result/success-change-password',
+} as const;
