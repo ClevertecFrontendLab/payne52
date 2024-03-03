@@ -13,4 +13,5 @@ export const Paths = {
     CHANGE_PASSWORD: '/auth/change-password',
     CHANGE_PASSWORD_ERROR: '/result/error-change-password',
     CHANGE_PASSWORD_SUCCESS: '/result/success-change-password',
+    FEEDBACKS: '/feedbacks',
 } as const;

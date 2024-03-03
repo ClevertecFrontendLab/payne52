@@ -5,7 +5,7 @@ import { Paths } from '@constants/paths';
 import { history } from '@redux/configure-store';
 import { useCheckEmailMutation, useLoginMutation, UserData, UserEmailData } from '@services/auth';
 import { isErrorWithMessage } from '@utils/is-error-with-message';
-import { RememberMe } from '@utils/rememberMe';
+import { RememberMe } from '@utils/remember-me';
 import { Form, Space } from 'antd';
 
 import {
@@ -25,14 +25,16 @@ export const LoginForm = () => {
     const retry = location.state?.retry;
 
     const [form] = Form.useForm();
+    const emailValue = Form.useWatch('email', form);
+    const rememberlValue = Form.useWatch('remember', form);
     const [disabled, setDisabled] = useState(false);
 
     const handleClickButton = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
-        if (!form.getFieldValue('email') || form.getFieldError('email').length) {
+        if (!emailValue || form.getFieldError('email').length) {
             setDisabled(true);
         } else {
-            checkEmail({ email: form.getFieldValue('email') });
+            checkEmail({ email: emailValue });
         }
     };
 
@@ -45,11 +47,9 @@ export const LoginForm = () => {
     const login = async (data: UserData) => {
         try {
             await trackPromise(
-                loginUser(data)
+                loginUser({ email: data.email, password: data.password })
                     .unwrap()
-                    .then((payload) =>
-                        RememberMe(form.getFieldValue('remember'), payload.accessToken),
-                    ),
+                    .then((payload) => RememberMe(rememberlValue, payload.accessToken)),
             );
             history.replace(Paths.MAIN);
         } catch (err) {
@@ -76,7 +76,7 @@ export const LoginForm = () => {
             } else {
                 history.push(
                     { pathname: Paths.CHECK_EMAIL_ERROR },
-                    { access: true, email: data.email },
+                    { access: true, email: data.email, pathFrom: location.pathname },
                 );
             }
         }
@@ -92,7 +92,7 @@ export const LoginForm = () => {
         <Form
             form={form}
             name='login'
-            initialValues={{ remember: true }}
+            initialValues={{ remember: false }}
             onFinish={login}
             onFieldsChange={handleChangeFields}
         >

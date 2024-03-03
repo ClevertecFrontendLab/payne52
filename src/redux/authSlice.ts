@@ -5,29 +5,29 @@ import { RootState } from './configure-store';
 
 interface InitialState {
     isAuthenticated: boolean;
-    accessToken: string | null;
 }
 
 const initialState: InitialState = {
     isAuthenticated: false,
-    accessToken: null,
 };
 
 const slice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        login: (state) => {
+            state.isAuthenticated = true;
+        },
         logout: () => initialState,
     },
     extraReducers: (builder) => {
-        builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
-            state.accessToken = action.payload.accessToken;
+        builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state) => {
             state.isAuthenticated = true;
         });
     },
 });
 
-export const { logout } = slice.actions;
+export const { login, logout } = slice.actions;
 export default slice.reducer;
 
 export const selectIsAuthorized = (state: RootState) => state.auth.isAuthenticated;

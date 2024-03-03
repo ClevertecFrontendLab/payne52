@@ -4,13 +4,13 @@ export type UserEmailData = {
     email: string;
 };
 
-export interface UserData extends UserEmailData {
+export type UserData = UserEmailData & {
     password: string;
-}
+};
 
-export interface UserConfirmEmailData extends UserEmailData {
+export type UserConfirmEmailData = UserEmailData & {
     code: string;
-}
+};
 
 export type UserNewPasswordData = {
     password: string;

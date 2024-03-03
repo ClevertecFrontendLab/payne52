@@ -1,0 +1,1 @@
+export { AntdRate } from './rate';

@@ -1,0 +1,97 @@
+@use '../../assets/scss/variables' as *;
+
+.feedbacks-page-content {
+    &.center {
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
+
+    & .feedbacks-add-first {
+        text-align: center;
+        margin-bottom: 20px;
+        align-items: center;
+        width: 100%;
+
+        & .ant-card-body {
+            padding: 56px 32px;
+
+            @media (max-width: 768px) {
+                padding: 48px 32px;
+            }
+
+            & > * {
+                max-width: 520px;
+            }
+
+            & h3 {
+                color: $primary-light-9;
+                margin-bottom: 48px;
+            }
+
+            & div.ant-typography {
+                color: $character-light-secondary-45;
+            }
+        }
+    }
+    & .feedbacks-list {
+        margin-bottom: 70px;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        @media (max-width: 768px) {
+            margin-bottom: 48px;
+        }
+
+        & .feedbacks-first-items {
+            & li:last-child .feedbacks-item {
+                margin-bottom: 0;
+            }
+        }
+
+        & .feedbacks-all-items {
+            overflow: hidden;
+            height: 0;
+
+            &.active {
+                height: auto;
+            }
+
+            & li:last-child .feedbacks-item {
+                margin-bottom: 0;
+            }
+
+            & li:first-child .feedbacks-item {
+                margin-top: 20px;
+
+                @media (max-width: 768px) {
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+
+    & .feedbacks-navigation {
+        width: 100%;
+
+        & .button {
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+
+        & .ant-btn-link.toggle-button {
+            margin-left: 8px;
+
+            @media (max-width: 768px) {
+                margin: 16px 0 18px;
+            }
+
+            & span {
+                font-size: 16px;
+                color: $primary-light-6;
+            }
+        }
+    }
+}

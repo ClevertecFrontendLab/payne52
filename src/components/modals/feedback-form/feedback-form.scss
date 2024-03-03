@@ -1,0 +1,18 @@
+.feedback-modal {
+    & .feedback-form {
+        & ul.ant-rate {
+            font-size: 24px;
+        }
+
+        & .rating-form-item {
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+    }
+
+    & .button {
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+}

@@ -1,11 +1,19 @@
 @use '../../assets/scss/variables' as *;
 
-.button.ant-btn-text {
+.ant-btn.button {
+    padding: 10px 15px;
+    line-height: 1;
+    height: 40px;
+}
+
+.button.ant-btn-text,
+.button.ant-btn-default {
     color: $character-light-title-85;
 }
 
 .button.ant-btn-primary {
     background: $primary-light-6;
+    border: 0;
 
     & span {
         color: $character-light-primary-inverse;
