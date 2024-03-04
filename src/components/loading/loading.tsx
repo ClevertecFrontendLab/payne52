@@ -10,16 +10,14 @@ export const Loading = ({ children, status }: { children: JSX.Element; status: b
         with: 150,
     };
 
-    if (status) {
-        return (
-            <>
-                {children}
+    return (
+        <div className={`${status ? 'overflow hidden' : 'overflow'}`}>
+            {status && (
                 <div className='loading' data-test-id='loader'>
                     <Lottie animationData={loader} className='loader' style={style} />
                 </div>
-            </>
-        );
-    } else {
-        return children;
-    }
+            )}
+            {children}
+        </div>
+    );
 };

@@ -7,10 +7,10 @@ type Props = {
     dataTestId?: string;
 };
 
-export const PasswordInput = ({ hasFeedback, message, dataTestId }: Props) => (
+export const PasswordInput = ({ hasFeedback, message = false, dataTestId }: Props) => (
     <AntdFormItem
         name='password'
-        className='form-item form-item-password'
+        className='form-item-password'
         rules={[
             {
                 required: true,

@@ -1,47 +1,57 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { AuthLayout } from '@components/layout/AuthLayout';
-import { Paths } from '@constants/paths';
 import {
     ChangePassword,
-    ChangePasswordError,
     ChangePasswordSuccess,
-    CheckEmailError,
     CheckEmailErrorUNE,
     ConfirmEmail,
+    Error500,
     LoginError,
     RegisterError,
     RegisterErrorUserExist,
     RegisterSuccess,
-} from '@pages/auth-page/results';
+    SaveDataError,
+} from '@components/index';
+import { AppLayout, AuthLayout } from '@components/layout';
+import { Paths } from '@constants/paths';
 import { selectIsAuthorized } from '@redux/authSlice';
 import { AccessToLocation } from '@utils/access-to-location';
 
 import { useAppSelector } from './hooks';
-import { AuthPage, MainPage } from './pages';
+import { AuthPage, FeedbacksPage, IndexPage, MainPage } from './pages';
 
 const App = () => {
     const access = AccessToLocation();
-    const token = localStorage.getItem('accessToken');
-    const isAuthorized = useAppSelector((rootState) => selectIsAuthorized(rootState));
+    const tokenFromLocalStorage = localStorage.getItem('access token');
+    const isAuthorized = useAppSelector((state) => selectIsAuthorized(state));
+
+    if (!isAuthorized) {
+        sessionStorage.removeItem('access token');
+    }
 
     return (
         <Routes>
-            {token && (
-                <>
-                    <Route path={Paths.HOME} element={<Navigate to={Paths.MAIN} />} />
-                    <Route path={Paths.MAIN} element={<MainPage />} />
+            <Route path={Paths.HOME} element={<IndexPage />} />
+
+            {tokenFromLocalStorage && (
+                <Route element={<AppLayout />}>
                     <Route path='*' element={<Navigate to={Paths.MAIN} />} />
-                </>
+                    <Route path={Paths.HOME} element={<IndexPage />} />
+                    <Route path={Paths.MAIN} element={<MainPage />} />
+                    <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
+                </Route>
             )}
 
             {isAuthorized && (
                 <>
-                    <Route path={Paths.HOME} element={<Navigate to={Paths.MAIN} />} />
-                    <Route path={Paths.MAIN} element={<MainPage />} />
+                    <Route element={<AppLayout />}>
+                        <Route path={Paths.HOME} element={<IndexPage />} />
+                        <Route path={Paths.MAIN} element={<MainPage />} />
+                        <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
+                    </Route>
                 </>
             )}
 
-            {!token && (
+            {!tokenFromLocalStorage && (
                 <>
                     <Route path='*' element={<Navigate to={Paths.AUTH} />} />
                     <Route element={<AuthLayout />}>
@@ -61,7 +71,12 @@ const App = () => {
                                 />
                                 <Route
                                     path={Paths.CHECK_EMAIL_ERROR}
-                                    element={<CheckEmailError />}
+                                    element={
+                                        <Error500
+                                            message='Произошла ошибка, попробуйте отправить форму ещё раз.'
+                                            dataTestId='check-back-button'
+                                        />
+                                    }
                                 />
                                 <Route
                                     path={Paths.CHECK_EMAIL_ERROR_UNE}
@@ -71,7 +86,7 @@ const App = () => {
                                 <Route path={Paths.CHANGE_PASSWORD} element={<ChangePassword />} />
                                 <Route
                                     path={Paths.CHANGE_PASSWORD_ERROR}
-                                    element={<ChangePasswordError />}
+                                    element={<SaveDataError dataTestId='change-retry-button' />}
                                 />
                                 <Route
                                     path={Paths.CHANGE_PASSWORD_SUCCESS}

@@ -1,0 +1,63 @@
+@use '../../assets/scss/variables' as *;
+
+div.feedbacks-item {
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 16px;
+    }
+
+    & .ant-card-body {
+        padding: 16px;
+
+        & > .ant-space {
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
+
+        & .author-info {
+            width: 175px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @media (max-width: 768px) {
+                width: auto;
+                flex-direction: row;
+                margin-bottom: 12px;
+            }
+
+            & .ant-typography {
+                margin-top: 12px;
+                font-size: 16px;
+                word-spacing: 100vw;
+                text-align: center;
+                flex: 1;
+
+                @media (max-width: 768px) {
+                    text-align: left;
+                    margin: 0 0 0 16px;
+                }
+            }
+        }
+
+        & .feedback-info {
+            margin-bottom: 12px;
+            line-height: 16px;
+
+            @media (max-width: 768px) {
+                margin-bottom: 18px;
+            }
+
+            & .ant-typography {
+                font-size: 12px;
+                color: $character-light-disable-25;
+            }
+        }
+
+        & .feedback-message {
+            color: $character-light-secondary-45;
+        }
+    }
+}

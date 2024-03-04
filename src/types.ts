@@ -6,3 +6,9 @@ export type ErrorData = {
         message: 'string';
     };
 };
+
+export type ModalProps = {
+    desktopSize: boolean | undefined;
+    open?: boolean;
+    callback?: () => void;
+};

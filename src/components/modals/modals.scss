@@ -1,0 +1,12 @@
+.ant-modal .ant-result-extra {
+    & .ant-space {
+        display: flex;
+
+        & > div {
+            flex: 1;
+        }
+    }
+    & .button {
+        width: 100%;
+    }
+}

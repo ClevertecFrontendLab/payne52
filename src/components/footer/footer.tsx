@@ -1,5 +1,7 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import { AntdCard } from '@components/card/card';
+import { Paths } from '@constants/paths';
+import { history } from '@redux/configure-store';
 import { Button, Space } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
 
@@ -8,7 +10,12 @@ import './footer.scss';
 export const AntdFooter: React.FC = () => (
     <Footer className='footer'>
         <Space className='space'>
-            <Button type='text' className='reviews'>
+            <Button
+                type='link'
+                className='reviews'
+                onClick={() => history.push(Paths.FEEDBACKS)}
+                data-test-id='see-reviews'
+            >
                 Смотреть отзывы
             </Button>
             <AntdCard

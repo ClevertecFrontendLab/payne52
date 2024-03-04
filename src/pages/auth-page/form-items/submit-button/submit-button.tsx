@@ -7,19 +7,17 @@ type Props = {
     dataTestId?: string;
 };
 
-export const SubmitButton = ({ children, disabled, dataTestId }: Props) => {
-    return (
-        <AntdFormItem shouldUpdate className='form-item form-item-submit'>
-            {() => (
-                <AntdButton
-                    type='primary'
-                    htmlType='submit'
-                    disabled={disabled}
-                    data-test-id={dataTestId}
-                >
-                    {children}
-                </AntdButton>
-            )}
-        </AntdFormItem>
-    );
-};
+export const SubmitButton = ({ children, disabled, dataTestId }: Props) => (
+    <AntdFormItem shouldUpdate className='form-item-submit'>
+        {() => (
+            <AntdButton
+                type='primary'
+                htmlType='submit'
+                disabled={disabled}
+                data-test-id={dataTestId}
+            >
+                {children}
+            </AntdButton>
+        )}
+    </AntdFormItem>
+);

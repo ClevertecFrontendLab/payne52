@@ -1,0 +1,6 @@
+@use '../../assets/scss/variables' as *;
+
+span.avatar {
+    background: $character-light-background;
+    color: $character-light-title-85;
+}

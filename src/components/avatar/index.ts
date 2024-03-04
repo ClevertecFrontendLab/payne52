@@ -1,0 +1,1 @@
+export { AntdAvatar } from './avatar';

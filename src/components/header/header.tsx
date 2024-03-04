@@ -1,27 +1,23 @@
-import { SettingOutlined } from '@ant-design/icons';
-import { Breadcrumb, Space, Typography } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { Routes } from '@constants/routes';
+import { Breadcrumb } from 'antd';
 import { Header } from 'antd/es/layout/layout';
-
-import { AntdButton } from '..';
+import useBreadcrumbs from 'use-react-router-breadcrumbs';
 
 import './header.scss';
 
-const { Title } = Typography;
+export const AntdHeader = () => {
+    const breadcrumbs = useBreadcrumbs(Routes);
 
-export const AntdHeader = () => (
-    <Header className='header'>
-        <Breadcrumb className='breadcrumbs'>
-            <Breadcrumb.Item>Главная</Breadcrumb.Item>
-        </Breadcrumb>
-        <Space className='space'>
-            <Title className='title'>
-                Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
-                мечты!
-            </Title>
-            <AntdButton type='text'>
-                <SettingOutlined />
-                Настройки
-            </AntdButton>
-        </Space>
-    </Header>
-);
+    return (
+        <Header className='header'>
+            <Breadcrumb className='breadcrumbs'>
+                {breadcrumbs.map(({ match, breadcrumb }) => (
+                    <Breadcrumb.Item key={match.pathname}>
+                        <NavLink to={match.pathname}>{breadcrumb}</NavLink>
+                    </Breadcrumb.Item>
+                ))}
+            </Breadcrumb>
+        </Header>
+    );
+};

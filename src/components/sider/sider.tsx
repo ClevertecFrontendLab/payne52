@@ -8,15 +8,16 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
+import Exit from '@assets/svg/exit.svg?react';
+import LogoMin from '@assets/svg/logo/logo.min.svg?react';
+import Logo from '@assets/svg/logo/logo.svg?react';
 import { Button, Menu, Space } from 'antd';
 import { Grid } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-
-import Exit from '../../assets/svg/exit.svg?react';
-import LogoMin from '../../assets/svg/logo/logo.min.svg?react';
-import Logo from '../../assets/svg/logo/logo.svg?react';
 const { useBreakpoint } = Grid;
 
+import { Link } from 'react-router-dom';
+import { Paths } from '@constants/paths';
 import { LogoutFunc } from '@utils/logout';
 
 import { AntdButton } from '..';
@@ -32,7 +33,7 @@ export const AntdSider: React.FC = () => {
             trigger={null}
             collapsible
             collapsed={collapsed}
-            width={screens.md ? '208' : '106'}
+            width={screens.md ? 208 : 106}
             collapsedWidth={screens.md ? '64' : '0'}
             className='sider'
         >
@@ -44,7 +45,9 @@ export const AntdSider: React.FC = () => {
                 data-test-id={screens.md ? 'sider-switch' : 'sider-switch-mobile'}
             />
             <Space className='logo-space'>
-                {screens.md ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}
+                <Link to={Paths.MAIN}>
+                    {screens.md ? collapsed ? <LogoMin /> : <Logo /> : <Logo />}
+                </Link>
             </Space>
             <Menu
                 theme='light'

@@ -1,0 +1,26 @@
+@use '../../assets/scss/variables' as *;
+
+ul.ant-rate {
+    font-size: 16px;
+
+    & .ant-rate-star:not(:last-child) {
+        margin-right: 4px;
+    }
+    & .ant-rate-star-zero path,
+    & .ant-rate-star-focused path {
+        fill: $character-light-warning;
+
+        &:first-child {
+            fill: transparent;
+        }
+    }
+    & .ant-rate-star-full path,
+    & .ant-rate-star-full.ant-rate-star-focused path {
+        fill: $character-light-warning;
+
+        &:first-child {
+            stroke: $character-light-warning;
+            stroke-width: 5%;
+        }
+    }
+}
