@@ -7,19 +7,17 @@ type Props = {
     dataTestId?: string;
 };
 
-export const ForgetPasswordButton = ({ disabled, callback, dataTestId }: Props) => {
-    return (
-        <AntdFormItem shouldUpdate className='form-item forget-password'>
-            {() => (
-                <AntdButton
-                    type='text'
-                    disabled={disabled}
-                    onClick={callback}
-                    data-test-id={dataTestId}
-                >
-                    Забыли пароль?
-                </AntdButton>
-            )}
-        </AntdFormItem>
-    );
-};
+export const ForgetPasswordButton = ({ disabled, callback, dataTestId }: Props) => (
+    <AntdFormItem shouldUpdate className='forget-password'>
+        {() => (
+            <AntdButton
+                type='text'
+                disabled={disabled}
+                onClick={callback}
+                data-test-id={dataTestId}
+            >
+                Забыли пароль?
+            </AntdButton>
+        )}
+    </AntdFormItem>
+);

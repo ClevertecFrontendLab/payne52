@@ -6,12 +6,12 @@ export type UserFeedbackData = {
 };
 
 export type ResponceFeedbackData = {
+    rating: number;
+    createdAt: string;
     id?: string;
     fullName?: string | null;
     imageSrc?: string | null;
     message?: string | null;
-    rating: number;
-    createdAt: string;
 };
 
 export type ResponseUserFeedbackData = Record<string, never>;

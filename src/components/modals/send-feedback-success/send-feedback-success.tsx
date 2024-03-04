@@ -3,6 +3,12 @@ import { Modal } from 'antd';
 import { ModalProps } from 'src/types';
 
 export const ModalSendFeedbackSuccess = ({ desktopSize, open, callback }: ModalProps) => {
+    const extra = (
+        <AntdButton type='primary' onClick={callback}>
+            Отлично
+        </AntdButton>
+    );
+
     return (
         <Modal
             centered
@@ -12,14 +18,7 @@ export const ModalSendFeedbackSuccess = ({ desktopSize, open, callback }: ModalP
             width={desktopSize ? 540 : 330}
             open={open}
         >
-            <Success
-                title='Отзыв успешно опубликован'
-                extra={
-                    <AntdButton type='primary' onClick={callback}>
-                        Отлично
-                    </AntdButton>
-                }
-            />
+            <Success title='Отзыв успешно опубликован' extra={extra} />
         </Modal>
     );
 };

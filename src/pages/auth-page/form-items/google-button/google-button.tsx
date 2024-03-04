@@ -13,7 +13,7 @@ export const GoogleButton = ({ children }: { children: JSX.Element | string }) =
         <AntdFormItem>
             <AntdButton
                 type='default'
-                className='button google-button'
+                className='google-button'
                 htmlType='button'
                 onClick={loginWithGoogle}
             >

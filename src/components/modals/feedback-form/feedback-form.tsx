@@ -71,6 +71,21 @@ export const ModalFeedbackForm = ({ desktopSize }: ModalProps) => {
         dispatch(newFeedback());
     };
 
+    const extra = (
+        <Space>
+            <AntdButton
+                type='primary'
+                onClick={handleOkError}
+                data-test-id='write-review-not-saved-modal'
+            >
+                Написать отзыв
+            </AntdButton>
+            <AntdButton type='default' onClick={handleCancelError}>
+                Закрыть
+            </AntdButton>
+        </Space>
+    );
+
     return (
         <>
             <AntdButton type='primary' onClick={showModal} data-test-id='write-review'>
@@ -104,7 +119,7 @@ export const ModalFeedbackForm = ({ desktopSize }: ModalProps) => {
                 >
                     <AntdFormItem
                         name='rating'
-                        className='rating-form-item form-item'
+                        className='rating-form-item'
                         rules={[{ required: true, message: '' }]}
                     >
                         <AntdRate />
@@ -126,22 +141,7 @@ export const ModalFeedbackForm = ({ desktopSize }: ModalProps) => {
                 footer={null}
                 width={desktopSize ? 540 : 330}
             >
-                <SaveDataError
-                    extra={
-                        <Space>
-                            <AntdButton
-                                type='primary'
-                                onClick={handleOkError}
-                                data-test-id='write-review-not-saved-modal'
-                            >
-                                Написать отзыв
-                            </AntdButton>
-                            <AntdButton type='default' onClick={handleCancelError}>
-                                Закрыть
-                            </AntdButton>
-                        </Space>
-                    }
-                />
+                <SaveDataError extra={extra} />
             </Modal>
 
             <ModalSendFeedbackSuccess

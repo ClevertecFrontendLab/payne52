@@ -3,7 +3,7 @@ import { Result } from 'antd';
 type Props = {
     title?: string;
     subTitle?: string;
-    extra?: JSX.Element | JSX.Element;
+    extra?: JSX.Element | JSX.Element[];
 };
 
 export const Success = (props: Props) => {

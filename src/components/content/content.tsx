@@ -1,4 +1,5 @@
 import { Content } from 'antd/es/layout/layout';
+import classNames from 'classnames';
 
 import './content.scss';
 
@@ -7,6 +8,11 @@ type Props = {
     className?: string;
 };
 
-export const AntdContent = ({ children, className = '' }: Props) => (
-    <Content className={`${className && className + ' '}content`}>{children}</Content>
-);
+export const AntdContent = ({ children, className = '' }: Props) => {
+    const contentClass = classNames({
+        [className]: className,
+        content: true,
+    });
+
+    return <Content className={contentClass}>{children}</Content>;
+};

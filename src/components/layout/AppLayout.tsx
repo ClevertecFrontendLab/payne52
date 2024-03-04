@@ -6,22 +6,20 @@ import { Layout } from 'antd';
 
 import { AntdHeader, AntdSider } from '..';
 
-const AppLayout = () => {
-    return (
-        <Suspense>
-            <Loading status={usePromiseTracker().promiseInProgress}>
-                <Layout className='app app-page'>
-                    <>
-                        <AntdSider />
-                        <Layout>
-                            <AntdHeader />
-                            <Outlet />
-                        </Layout>
-                    </>
-                </Layout>
-            </Loading>
-        </Suspense>
-    );
-};
+const AppLayout = () => (
+    <Suspense>
+        <Loading status={usePromiseTracker().promiseInProgress}>
+            <Layout className='app app-page'>
+                <>
+                    <AntdSider />
+                    <Layout>
+                        <AntdHeader />
+                        <Outlet />
+                    </Layout>
+                </>
+            </Layout>
+        </Loading>
+    </Suspense>
+);
 
 export { AppLayout };

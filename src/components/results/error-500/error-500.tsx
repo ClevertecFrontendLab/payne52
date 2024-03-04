@@ -16,27 +16,29 @@ export const Error500 = ({ message, dataTestId }: Props) => {
     const email = location.state?.email;
     const back = location.state?.pathFrom;
 
+    const extra = (
+        <AntdButton
+            type='primary'
+            onClick={() => {
+                if (back) {
+                    history.replace({ pathname: back }, { email: email, retry: true });
+                } else {
+                    history.replace(Paths.MAIN);
+                }
+            }}
+            data-test-id={dataTestId}
+        >
+            Назад
+        </AntdButton>
+    );
+
     return (
         <Result
             className='result error-500'
             status='500'
             title='Что-то пошло не так'
             subTitle={message ? message : 'Произошла ошибка, попробуйте ещё раз.'}
-            extra={
-                <AntdButton
-                    type='primary'
-                    onClick={() => {
-                        if (back) {
-                            history.replace({ pathname: back }, { email: email, retry: true });
-                        } else {
-                            history.replace(Paths.MAIN);
-                        }
-                    }}
-                    data-test-id={dataTestId}
-                >
-                    Назад
-                </AntdButton>
-            }
+            extra={extra}
         />
     );
 };

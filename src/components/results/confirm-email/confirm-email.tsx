@@ -36,37 +36,41 @@ export const ConfirmEmail = () => {
         }
     };
 
+    const subTitle = (
+        <>
+            Мы отправили вам на e-mail <strong>{email}</strong> шестизначный код. Введите его в поле
+            ниже.
+        </>
+    );
+
+    const extra = (
+        <>
+            <Space className='verification'>
+                <VerificationInput
+                    length={6}
+                    value={fieldValue}
+                    onChange={(value) => handleChange(value)}
+                    placeholder=' '
+                    onComplete={(value) => confirmEmail({ email: email, code: value })}
+                    classNames={{
+                        container: 'inputs',
+                        character: `ant-input ${fieldStatus}`,
+                        characterSelected: 'ant-input-focused',
+                    }}
+                    inputProps={{ 'data-test-id': 'verification-input' }}
+                />
+            </Space>
+            <Paragraph type='secondary'>Не пришло письмо? Проверьте папку Спам.</Paragraph>
+        </>
+    );
+
     return (
         <Result
             status={resultStatus}
             className='result'
             title='Введите код для восстановления аккауанта'
-            subTitle={
-                <>
-                    Мы отправили вам на e-mail <strong>{email}</strong> шестизначный код. Введите
-                    его в поле ниже.
-                </>
-            }
-            extra={
-                <>
-                    <Space className='verification'>
-                        <VerificationInput
-                            length={6}
-                            value={fieldValue}
-                            onChange={(value) => handleChange(value)}
-                            placeholder=' '
-                            onComplete={(value) => confirmEmail({ email: email, code: value })}
-                            classNames={{
-                                container: 'inputs',
-                                character: `ant-input ${fieldStatus}`,
-                                characterSelected: 'ant-input-focused',
-                            }}
-                            inputProps={{ 'data-test-id': 'verification-input' }}
-                        />
-                    </Space>
-                    <Paragraph type='secondary'>Не пришло письмо? Проверьте папку Спам.</Paragraph>
-                </>
-            }
+            subTitle={subTitle}
+            extra={extra}
         />
     );
 };

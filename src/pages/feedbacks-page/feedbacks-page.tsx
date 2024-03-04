@@ -11,6 +11,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectFeedbacksUpdate } from '@redux/feedbackSlice';
 import { useGetFeedbacksMutation } from '@services/feedback';
 import { Grid, List } from 'antd';
+import classNames from 'classnames';
 
 import './feedbacks-page.scss';
 
@@ -65,10 +66,23 @@ export const FeedbacksPage = () => {
 
     const screens = useBreakpoint();
 
+    const pageContentClass = classNames({
+        'feedbacks-page-content': true,
+        center: !data?.[0],
+    });
+
+    const feedbacksAllItemsClass = classNames({
+        'feedbacks-all-items': true,
+        active: showAll,
+    });
+
+    const feedbacksNavigationClass = classNames({
+        'feedbacks-navigation': true,
+        center: !data?.[0],
+    });
+
     return (
-        <AntdContent
-            className={data?.[0] ? 'feedbacks-page-content' : 'feedbacks-page-content center'}
-        >
+        <AntdContent className={pageContentClass}>
             {data?.[0] ? (
                 <div
                     className='feedbacks-list'
@@ -83,9 +97,7 @@ export const FeedbacksPage = () => {
                         ))}
                     </List>
 
-                    <List
-                        className={showAll ? 'feedbacks-all-items active' : 'feedbacks-all-items'}
-                    >
+                    <List className={feedbacksAllItemsClass}>
                         {sortedFeedbacks?.slice(4).map((feedback) => (
                             <li key={feedback.id} id={feedback.id}>
                                 <FeedbacksItem itemData={feedback} />
@@ -97,7 +109,7 @@ export const FeedbacksPage = () => {
                 <FeedbacksAddFirstMessage />
             )}
 
-            <div className={data?.[0] ? 'feedbacks-navigation' : 'feedbacks-navigation center'}>
+            <div className={feedbacksNavigationClass}>
                 <ModalFeedbackForm desktopSize={screens.md} />
 
                 {data?.[0] && (
