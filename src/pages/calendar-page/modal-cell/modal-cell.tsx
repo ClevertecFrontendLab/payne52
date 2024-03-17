@@ -2,14 +2,8 @@ import { useEffect, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { AntdButton, TrainingListItem } from '@components/index';
 import { BadgeType } from '@constants/badge-classes';
-import {
-    ResponceTraining,
-    ResponceTrainingList,
-    ResponceTrainingTypeList,
-    TrainingType,
-} from '@services/training';
+import { ResponceTrainingList, ResponceTrainingTypeList, TrainingType } from '@services/training';
 import { Empty } from 'antd';
-import moment from 'moment';
 
 import { TrainingForm } from './training-form';
 
@@ -36,7 +30,7 @@ export const ModalCell = ({
     trainingTypeData,
     trainingDataList,
 }: ModalCellType) => {
-    const isPast = Date.parse(dateUTC as string) < moment.now();
+    const isPast = Date.parse(dateUTC as string) < new Date().setDate(new Date().getDate());
 
     const [form, setForm] = useState(false);
     const [currentTrainingName, setCurrentTrainingName] = useState<string | undefined>(undefined);

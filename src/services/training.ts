@@ -24,7 +24,7 @@ export type UserTrainingParameters = {
 
 export type UserTraining = {
     name: string;
-    date: string | number;
+    date: string;
     exercises: UserExercise[];
     isImplementation?: boolean;
     parameters?: UserTrainingParameters;
