@@ -24,14 +24,10 @@ import { ModalCell } from './modal-cell';
 import './calendar-page.scss';
 
 const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
-    if (data?.[0]) {
-        const trainings = data.filter(
-            (training) => formatDate(training.date) === value.format('DD.MM.YYYY'),
-        );
-        return trainings;
-    } else {
-        return [];
-    }
+    const trainings = data?.filter(
+        (training) => formatDate(training.date) === value.format('DD.MM.YYYY'),
+    );
+    return trainings || [];
 };
 
 export const CalendarPage = () => {
