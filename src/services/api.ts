@@ -10,6 +10,5 @@ export const api = createApi({
     reducerPath: 'splitApi',
     baseQuery: baseQueryWithRetry,
     refetchOnMountOrArgChange: true,
-    tagTypes: ['Feedback'],
     endpoints: () => ({}),
 });

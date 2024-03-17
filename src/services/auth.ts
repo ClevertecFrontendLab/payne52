@@ -21,8 +21,6 @@ export type ResponseLoginData = {
     accessToken: string;
 };
 
-export type ResponseRegisterData = Record<string, never>;
-
 export type ResponseEmailData = {
     email: string;
     message: string;
@@ -39,7 +37,7 @@ export const authApi = api.injectEndpoints({
                 body: userData,
             }),
         }),
-        register: builder.mutation<ResponseRegisterData, UserData>({
+        register: builder.mutation<void, UserData>({
             query: (userData) => ({
                 url: '/auth/registration',
                 method: 'POST',

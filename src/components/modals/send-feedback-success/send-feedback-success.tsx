@@ -2,9 +2,9 @@ import { AntdButton, Success } from '@components/index';
 import { Modal } from 'antd';
 import { ModalProps } from 'src/types';
 
-export const ModalSendFeedbackSuccess = ({ desktopSize, open, callback }: ModalProps) => {
+export const ModalSendFeedbackSuccess = ({ desktopSize, open, close }: ModalProps) => {
     const extra = (
-        <AntdButton type='primary' onClick={callback}>
+        <AntdButton type='primary' onClick={close}>
             Отлично
         </AntdButton>
     );

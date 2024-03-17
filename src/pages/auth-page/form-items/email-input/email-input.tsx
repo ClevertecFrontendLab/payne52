@@ -1,5 +1,5 @@
-import { AntdFormItem } from '@components/form-item/form-item';
-import { AntdInput } from '@components/input';
+import { AntdFormItem } from '@components/generic/form-item/form-item';
+import { AntdInput } from '@components/generic/input';
 import { ValidateStatus } from 'antd/es/form/FormItem';
 
 type Props = {

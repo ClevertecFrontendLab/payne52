@@ -14,11 +14,9 @@ export type ResponceFeedbackData = {
     message?: string | null;
 };
 
-export type ResponseUserFeedbackData = Record<string, never>;
-
 export const feedbackApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        getFeedbacks: builder.mutation<Array<ResponceFeedbackData>, unknown>({
+        getFeedbacks: builder.mutation<Array<ResponceFeedbackData>, void>({
             query: () => ({
                 url: '/feedback',
                 method: 'GET',
@@ -30,7 +28,7 @@ export const feedbackApi = api.injectEndpoints({
                 },
             }),
         }),
-        sendFeedback: builder.mutation<ResponseUserFeedbackData, UserFeedbackData>({
+        sendFeedback: builder.mutation<void, UserFeedbackData>({
             query: (userFeedbackData) => ({
                 url: '/feedback',
                 method: 'POST',

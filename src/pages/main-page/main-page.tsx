@@ -1,24 +1,12 @@
-import { CalendarTwoTone, HeartFilled, IdcardOutlined, SettingOutlined } from '@ant-design/icons';
-import { AntdButton, AntdCard, AntdContent, AntdFooter } from '@components/index';
+import { HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { AntdCard, AntdContent, AntdFooter } from '@components/index';
+import { NavToCalendarPage } from '@pages/index';
 import { Button, Col, Row, Space, Typography } from 'antd';
-const { Title } = Typography;
 
 import './main-page.scss';
 
 export const MainPage: React.FC = () => (
     <>
-        <div className='main-page-header'>
-            <Space className='space'>
-                <Title className='title'>
-                    Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
-                    мечты!
-                </Title>
-                <AntdButton type='text'>
-                    <SettingOutlined />
-                    Настройки
-                </AntdButton>
-            </Space>
-        </div>
         <AntdContent className='main-page-content'>
             <Space className='container' direction='vertical' size={16}>
                 <Space>
@@ -54,10 +42,7 @@ export const MainPage: React.FC = () => (
                         </Col>
                         <Col span={8}>
                             <AntdCard title='Назначить календарь' className='card-item'>
-                                <Button type='text'>
-                                    <CalendarTwoTone />
-                                    Календарь
-                                </Button>
+                                <NavToCalendarPage type='button' />
                             </AntdCard>
                         </Col>
                         <Col span={8}>

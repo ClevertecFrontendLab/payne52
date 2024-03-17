@@ -1,0 +1,31 @@
+@use '@assets/scss/variables' as *;
+
+.training-list-item {
+    line-height: 1.3;
+
+    & .ant-badge {
+        white-space: nowrap;
+    }
+
+    &.disabled {
+        & .ant-badge-status-text {
+            color: $character-light-disable-25;
+        }
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    & .ant-space {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    & .edit-button {
+        padding: 2px;
+        border: 0;
+        height: auto;
+        line-height: inherit;
+    }
+}

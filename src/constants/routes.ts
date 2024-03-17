@@ -13,4 +13,8 @@ export const Routes = [
         path: Paths.FEEDBACKS,
         breadcrumb: 'Отзывы пользователей',
     },
+    {
+        path: Paths.CALENDAR,
+        breadcrumb: 'Календарь',
+    },
 ];

@@ -16,17 +16,26 @@ import { Grid } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 const { useBreakpoint } = Grid;
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Paths } from '@constants/paths';
-import { LogoutFunc } from '@utils/logout';
-
-import { AntdButton } from '..';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { NavToCalendarPage } from '@pages/index';
+import { logout } from '@redux/authSlice';
 
 import './sider.scss';
 
 export const AntdSider: React.FC = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const screens = useBreakpoint();
+    const pathname = useLocation().pathname;
+
+    const dispatch = useAppDispatch();
+    const userLogout = () => {
+        dispatch(logout());
+
+        localStorage.removeItem('access token');
+        sessionStorage.removeItem('access token');
+    };
 
     return (
         <Sider
@@ -52,11 +61,12 @@ export const AntdSider: React.FC = () => {
             <Menu
                 theme='light'
                 mode='inline'
+                selectedKeys={[pathname]}
                 items={[
                     {
-                        key: '1',
-                        icon: <CalendarTwoTone />,
-                        label: 'Календарь',
+                        key: Paths.CALENDAR,
+                        icon: <CalendarTwoTone className='calendar-icon' />,
+                        label: <NavToCalendarPage />,
                     },
                     {
                         key: '2',
@@ -74,12 +84,12 @@ export const AntdSider: React.FC = () => {
                         label: 'Профиль',
                     },
                     {
-                        key: '5',
+                        key: Paths.AUTH,
                         icon: <Icon component={Exit} />,
                         label: (
-                            <AntdButton type='text' onClick={LogoutFunc}>
+                            <Link to={Paths.AUTH} onClick={userLogout}>
                                 Выход
-                            </AntdButton>
+                            </Link>
                         ),
                     },
                 ]}

@@ -1,0 +1,94 @@
+@use '@assets/scss/variables' as *;
+
+.training-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.content.calendar-page-content {
+    padding: 0 0 48px 0;
+
+    & .ant-picker-calendar:not(.ant-picker-calendar-mini) {
+        padding: 0 24px 90px;
+        background-color: $primary-light-1;
+
+        & .ant-picker-panel {
+            background: transparent;
+
+            & .ant-picker-cell-selected {
+                z-index: 2;
+            }
+
+            & .ant-picker-cell {
+                &.ant-picker-cell-today {
+                    & .ant-picker-cell-inner {
+                        border-color: $blue-dark-6;
+                    }
+                }
+
+                & .ant-picker-cell-inner {
+                    background-color: $character-light-primary-inverse;
+                    position: relative;
+                    z-index: 1;
+                    overflow: hidden;
+
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+
+            & .ant-picker-calendar-date-content {
+                height: 120px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    & .ant-picker-calendar-mini {
+        padding: 0 24px 24px;
+        background-color: $primary-light-1;
+        position: relative;
+
+        & .ant-picker-calendar-header {
+            background-color: $character-light-primary-inverse;
+        }
+
+        & .ant-picker-cell-selected .ant-picker-calendar-date {
+            background: $character-light-background;
+            color: $character-light-title-85;
+        }
+
+        & .ant-picker-body {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        & .ant-picker-content td {
+            position: initial;
+        }
+
+        & .ant-picker-cell-today .ant-picker-calendar-date {
+            color: $character-light-title-85;
+        }
+
+        & .cell {
+            margin: 0 2px;
+            border-radius: 2px;
+
+            &.has-training {
+                background-color: $primary-light-1;
+            }
+        }
+
+        & .ant-picker-calendar-date {
+            width: 100%;
+            padding: 0 4px;
+        }
+
+        & .ant-picker-calendar-date-content {
+            display: none;
+        }
+    }
+}

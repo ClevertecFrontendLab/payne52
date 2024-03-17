@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { feedbackApi } from '@services/feedback';
+import { getFeedbacks } from '@services/feedback';
 
 import { RootState } from './configure-store';
 
@@ -20,7 +20,7 @@ const slice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addMatcher(feedbackApi.endpoints.getFeedbacks.matchFulfilled, (state) => {
+        builder.addMatcher(getFeedbacks.matchFulfilled, (state) => {
             state.update = false;
         });
     },

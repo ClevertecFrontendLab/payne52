@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { AntdButton } from '@components/button';
+import { AntdButton } from '@components/generic/button';
 import { Paths } from '@constants/paths';
 import { history } from '@redux/configure-store';
 import { Result } from 'antd';
@@ -9,9 +9,10 @@ import './error-500.scss';
 type Props = {
     message?: string;
     dataTestId?: string;
+    close?: () => void;
 };
 
-export const Error500 = ({ message, dataTestId }: Props) => {
+export const Error500 = ({ message, dataTestId, close }: Props) => {
     const location = useLocation();
     const email = location.state?.email;
     const back = location.state?.pathFrom;
@@ -22,6 +23,8 @@ export const Error500 = ({ message, dataTestId }: Props) => {
             onClick={() => {
                 if (back) {
                     history.replace({ pathname: back }, { email: email, retry: true });
+                } else if (close) {
+                    close();
                 } else {
                     history.replace(Paths.MAIN);
                 }

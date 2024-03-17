@@ -1,15 +1,23 @@
-export { AntdAvatar } from './avatar';
-export { AntdButton } from './button';
-export { AntdCard } from './card';
-export { AntdContent } from './content';
-export { FeedbacksAddFirstMessage } from './feedbacks-add-first-message';
-export { FeedbacksItem } from './feedbacks-item';
 export { AntdFooter } from './footer';
-export { AntdFormItem } from './form-item';
+export {
+    AntdAvatar,
+    AntdBadge,
+    AntdButton,
+    AntdCard,
+    AntdContent,
+    AntdFormItem,
+    AntdInput,
+    AntdInputPassword,
+    AntdRate,
+    TrainingListItem,
+} from './generic/index';
 export { AntdHeader } from './header';
-export { AntdInput, AntdInputPassword } from './input';
-export { ModalError500, ModalFeedbackForm, ModalSendFeedbackSuccess } from './modals';
-export { AntdRate } from './rate';
+export {
+    ModalError500,
+    ModalFeedbackForm,
+    ModalSendFeedbackSuccess,
+    modalTrainingError,
+} from './modals';
 export {
     ChangePassword,
     ChangePasswordSuccess,

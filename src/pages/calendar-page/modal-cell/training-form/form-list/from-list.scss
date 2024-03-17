@@ -1,0 +1,81 @@
+@use '@assets/scss/variables' as *;
+
+.form-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-right: -12px;
+
+    & .exercises {
+        &.scrolled {
+            &::-webkit-scrollbar-thumb {
+                border-width: 2px;
+            }
+        }
+
+        & .exercise {
+            margin-bottom: 22px;
+            padding: 2px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            & .name {
+                margin-bottom: 8px;
+            }
+
+            & .numbers {
+                align-items: flex-end;
+
+                & .ant-input-number {
+                    width: 100%;
+                }
+
+                & .replays {
+                    margin-right: 32px;
+                }
+
+                & .multiply {
+                    display: inline-block;
+                    margin: 0 2px 4px;
+                    color: $character-light-disable-25;
+                }
+
+                & .ant-form-item-label {
+                    background-color: $character-light-dividers;
+                    border-radius: 2px;
+                    width: 100%;
+                    text-align: left;
+                    padding: 0 8px;
+                    margin-bottom: 6px;
+
+                    & > label {
+                        line-height: 24px;
+                        height: auto;
+                        color: $character-light-title-85;
+
+                        &::after {
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .form-list-nav {
+        margin-top: 24px;
+        width: calc(100% - 12px);
+        border-radius: 0 0 6px 6px;
+        background-color: $character-light-dividers;
+
+        & > * {
+            width: 50%;
+
+            & .anticon {
+                font-size: 12px;
+            }
+        }
+    }
+}

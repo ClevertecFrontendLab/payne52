@@ -147,7 +147,7 @@ export const ModalFeedbackForm = ({ desktopSize }: ModalProps) => {
             <ModalSendFeedbackSuccess
                 desktopSize={desktopSize}
                 open={isModalSuccessOpen}
-                callback={handleOkSuccess}
+                close={handleOkSuccess}
             />
         </>
     );

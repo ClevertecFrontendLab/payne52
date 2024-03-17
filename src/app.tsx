@@ -13,18 +13,20 @@ import {
 } from '@components/index';
 import { AppLayout, AuthLayout } from '@components/layout';
 import { Paths } from '@constants/paths';
-import { selectIsAuthorized } from '@redux/authSlice';
+import { selectIsAuthenticated } from '@redux/authSlice';
 import { AccessToLocation } from '@utils/access-to-location';
 
 import { useAppSelector } from './hooks';
-import { AuthPage, FeedbacksPage, IndexPage, MainPage } from './pages';
+import { AuthPage, CalendarPage, FeedbacksPage, IndexPage, MainPage } from './pages';
 
 const App = () => {
     const access = AccessToLocation();
     const tokenFromLocalStorage = localStorage.getItem('access token');
-    const isAuthorized = useAppSelector((state) => selectIsAuthorized(state));
+    const isAuthenticated = useAppSelector((state) => selectIsAuthenticated(state));
 
-    if (!isAuthorized) {
+    const isAuthorized = tokenFromLocalStorage || isAuthenticated;
+
+    if (!isAuthenticated) {
         sessionStorage.removeItem('access token');
     }
 
@@ -32,26 +34,17 @@ const App = () => {
         <Routes>
             <Route path={Paths.HOME} element={<IndexPage />} />
 
-            {tokenFromLocalStorage && (
-                <Route element={<AppLayout />}>
-                    <Route path='*' element={<Navigate to={Paths.MAIN} />} />
-                    <Route path={Paths.HOME} element={<IndexPage />} />
-                    <Route path={Paths.MAIN} element={<MainPage />} />
-                    <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
-                </Route>
-            )}
-
-            {isAuthorized && (
+            {isAuthorized ? (
                 <>
                     <Route element={<AppLayout />}>
+                        <Route path='*' element={<Navigate to={Paths.MAIN} />} />
                         <Route path={Paths.HOME} element={<IndexPage />} />
                         <Route path={Paths.MAIN} element={<MainPage />} />
                         <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
+                        <Route path={Paths.CALENDAR} element={<CalendarPage />} />
                     </Route>
                 </>
-            )}
-
-            {!tokenFromLocalStorage && (
+            ) : (
                 <>
                     <Route path='*' element={<Navigate to={Paths.AUTH} />} />
                     <Route element={<AuthLayout />}>

@@ -1,5 +1,5 @@
-import { AntdButton } from '@components/button';
-import { AntdFormItem } from '@components/form-item/form-item';
+import { AntdButton } from '@components/generic/button';
+import { AntdFormItem } from '@components/generic/form-item/form-item';
 
 type Props = {
     disabled?: boolean;
