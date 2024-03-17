@@ -9,9 +9,9 @@ export type ResponceTrainingTypeList = TrainingType[];
 
 export type UserExercise = {
     name: string;
-    replays: number;
-    weight: number;
-    approaches: number;
+    replays?: number;
+    weight?: number;
+    approaches?: number;
     isImplementation?: boolean;
 };
 
@@ -24,7 +24,7 @@ export type UserTrainingParameters = {
 
 export type UserTraining = {
     name: string;
-    date: string | number;
+    date: string;
     exercises: UserExercise[];
     isImplementation?: boolean;
     parameters?: UserTrainingParameters;
@@ -44,8 +44,8 @@ export type ResponceTrainingParameters = UserTrainingParameters;
 export type ResponceTraining = Omit<UserTraining, 'parametrs' | 'exercises'> & {
     _id: string;
     userId: string;
-    parameters: ResponceTrainingParameters;
     exercises: ResponceExercise[];
+    parameters?: ResponceTrainingParameters;
 };
 
 export type ResponceTrainingList = ResponceTraining[];

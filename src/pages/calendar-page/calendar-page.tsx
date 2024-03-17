@@ -26,7 +26,7 @@ import './calendar-page.scss';
 const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
     if (data?.[0]) {
         const trainings = data.filter(
-            (training) => formatDate(training.date) == value.format('DD.MM.YYYY'),
+            (training) => formatDate(training.date) === value.format('DD.MM.YYYY'),
         );
         return trainings;
     } else {
@@ -35,6 +35,14 @@ const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
 };
 
 export const CalendarPage = () => {
+    const firstMount = useRef(false);
+    useEffect(() => {
+        if (!firstMount.current) {
+            firstMount.current = true;
+            getTrainingTypeList();
+        }
+    }, []);
+
     const trainingData = useAppSelector(
         (state: RootState) => state.splitApi.mutations?.['training-mutation']?.data,
     ) as ResponceTrainingList;
@@ -54,14 +62,6 @@ export const CalendarPage = () => {
             modalTrainingError({ retry: getTrainingTypeList, width: 384 });
         }
     };
-
-    const firstMount = useRef(false);
-    useEffect(() => {
-        if (!firstMount.current) {
-            firstMount.current = true;
-            getTrainingTypeList();
-        }
-    }, []);
 
     const dateFullCellRender = (value: Moment) => {
         const trainingDataList = getTrainingList(trainingData, value);
