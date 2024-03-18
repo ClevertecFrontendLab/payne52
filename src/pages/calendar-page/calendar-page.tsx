@@ -25,7 +25,9 @@ import './calendar-page.scss';
 
 const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
     const trainings = data?.filter(
-        (training) => formatDate(training.date) === value.format('DD.MM.YYYY'),
+        (training) =>
+            new Date(training.date).toLocaleString('ru').split(',')[0] ===
+            value.format('DD.MM.YYYY'),
     );
     return trainings || [];
 };
@@ -49,9 +51,11 @@ export const CalendarPage = () => {
     const [getFullTrainingList] = useGetTrainingTypeListMutation();
     const getTrainingTypeList = async () => {
         try {
-            await getFullTrainingList()
-                .unwrap()
-                .then((resp) => setTrainingTypeData(resp));
+            await trackPromise(
+                getFullTrainingList()
+                    .unwrap()
+                    .then((resp) => setTrainingTypeData(resp)),
+            );
         } catch (err) {
             modalTrainingError({ retry: getTrainingTypeList, width: 384 });
         }
