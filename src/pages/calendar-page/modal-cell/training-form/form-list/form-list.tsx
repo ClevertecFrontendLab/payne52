@@ -63,7 +63,7 @@ export const TrainingFormList = ({ edit, form }: { edit?: boolean; form: FormIns
                                                             index,
                                                         )}
                                                         data-test-id={`modal-drawer-right-input-exercise${index}`}
-                                                    ></Input>
+                                                    />
                                                 </AntdFormItem>
                                             )}
                                         </AntdFormItem>

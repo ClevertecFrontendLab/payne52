@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AntdContent, modalTrainingError, TrainingListItem } from '@components/index';
 import { Calendar } from 'antd';
 import { Grid } from 'antd';
@@ -69,11 +69,13 @@ export const CalendarPage = () => {
             'has-training': trainingDataList?.[0],
         });
 
+        const cellId = `cell-${value.format('DD-MM-YYYY')}`;
+
         return (
             <div onClick={(e) => stopPropagation(e)} className={cellClass}>
                 <div
                     className='ant-picker-cell-inner ant-picker-calendar-date'
-                    id={`cell-${value.format('DD-MM-YYYY')}`}
+                    id={cellId}
                     onClick={(e) => openMC(e, value)}
                 >
                     <div className='ant-picker-calendar-date-value'>{value.date()}</div>
@@ -93,7 +95,7 @@ export const CalendarPage = () => {
                 <ModalCell
                     currentCellId={currentCellId}
                     style={positionMC}
-                    dataId={`cell-${value.format('DD-MM-YYYY')}`}
+                    dataId={cellId}
                     date={date}
                     dateUTC={dateUTC}
                     close={() => closeModalCell()}
@@ -122,9 +124,7 @@ export const CalendarPage = () => {
         }
     };
 
-    const closeModalCell = () => {
-        setCurrentCellId('');
-    };
+    const closeModalCell = () => setCurrentCellId('');
 
     return (
         <AntdContent className='calendar-page-content'>

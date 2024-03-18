@@ -1,12 +1,20 @@
-.ant-modal .ant-result-extra {
-    & .ant-space {
-        display: flex;
+div.ant-modal-mask {
+    z-index: 1052;
+}
 
-        & > div {
-            flex: 1;
+div.ant-modal-wrap {
+    z-index: 1053;
+
+    & .ant-modal .ant-result-extra {
+        & .ant-space {
+            display: flex;
+
+            & > div {
+                flex: 1;
+            }
         }
-    }
-    & .button {
-        width: 100%;
+        & .button {
+            width: 100%;
+        }
     }
 }

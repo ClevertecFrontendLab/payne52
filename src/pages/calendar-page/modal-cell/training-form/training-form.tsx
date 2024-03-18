@@ -121,11 +121,8 @@ export const TrainingForm = ({
 
         setExercises(realExercises);
 
-        if (realExercises?.[0]) {
-            form.setFieldsValue({ exercises: realExercises });
-        } else {
-            form.setFieldsValue({ exercises: [''] });
-        }
+        const realExercisesData = realExercises?.[0] ? realExercises : [''];
+        form.setFieldsValue({ exercises: realExercisesData });
     };
 
     const [sendUserTraining, sendOptions] = useSendTrainingMutation();

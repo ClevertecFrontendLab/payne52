@@ -36,13 +36,13 @@ export const modalTrainingError = ({ retry, title, content, className, width }: 
                 <CloseOutlined />
             </span>
         ),
-        content: content ? (
-            <span data-test-id='modal-error-user-training-subtitle'>{content}</span>
-        ) : (
-            <span data-test-id='modal-error-user-training-subtitle'>Попробуйте ещё раз.</span>
+        content: (
+            <span data-test-id='modal-error-user-training-subtitle'>
+                {content ? content : 'Попробуйте ещё раз.'}
+            </span>
         ),
         className: modalTrainingClassName,
-        closable: retry ? true : false,
+        closable: Boolean(retry),
         centered: true,
         okText: (
             <span data-test-id='modal-error-user-training-button'>
