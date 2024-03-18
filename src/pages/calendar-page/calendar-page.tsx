@@ -31,13 +31,15 @@ const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
 };
 
 export const CalendarPage = () => {
-    const ref = useRef(true);
+    const [error, setError] = useState(false);
+
     useEffect(() => {
-        if (ref.current) {
-            getTrainingTypeList();
-            ref.current = false;
-        }
+        getTrainingTypeList();
     }, []);
+
+    useEffect(() => {
+        error && modalTrainingError({ retry: getTrainingTypeList, width: 384 });
+    }, [error]);
 
     const trainingData = useAppSelector(
         (state: RootState) => state.splitApi.mutations?.['training-mutation']?.data,
@@ -48,6 +50,7 @@ export const CalendarPage = () => {
 
     const [getFullTrainingList] = useGetTrainingTypeListMutation();
     const getTrainingTypeList = async () => {
+        setError(false);
         try {
             await trackPromise(
                 getFullTrainingList()
@@ -55,7 +58,7 @@ export const CalendarPage = () => {
                     .then((resp) => setTrainingTypeData(resp)),
             );
         } catch (err) {
-            modalTrainingError({ retry: getTrainingTypeList, width: 384 });
+            setError(true);
         }
     };
 
