@@ -49,11 +49,9 @@ export const CalendarPage = () => {
     const [getFullTrainingList] = useGetTrainingTypeListMutation();
     const getTrainingTypeList = async () => {
         try {
-            await trackPromise(
-                getFullTrainingList()
-                    .unwrap()
-                    .then((resp) => setTrainingTypeData(resp)),
-            );
+            await getFullTrainingList()
+                .unwrap()
+                .then((resp) => setTrainingTypeData(resp));
         } catch (err) {
             modalTrainingError({ retry: getTrainingTypeList, width: 384 });
         }
