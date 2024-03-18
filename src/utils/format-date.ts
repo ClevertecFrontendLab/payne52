@@ -1,11 +1,4 @@
-export const formatDate = (date: string | number) => {
-    let dateToFormat;
-
-    if (typeof date == 'string') {
-        dateToFormat = new Date(date);
-    } else {
-        dateToFormat = date;
-    }
-
+export const formatDate = (date: string) => {
+    const dateToFormat = new Date(date);
     return Intl.DateTimeFormat().format(dateToFormat);
 };

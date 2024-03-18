@@ -14,7 +14,6 @@ import {
     ResponceTrainingTypeList,
     useGetTrainingTypeListMutation,
 } from '@services/training';
-import { formatDate } from '@utils/format-date';
 import { calendarLocale } from '@utils/locale';
 import { position } from '@utils/modal-cell-position';
 import classNames from 'classnames';
@@ -25,9 +24,7 @@ import './calendar-page.scss';
 
 const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
     const trainings = data?.filter(
-        (training) =>
-            new Date(training.date).toLocaleString('ru').split(',')[0] ===
-            value.format('DD.MM.YYYY'),
+        (training) => new Date(training.date).toLocaleDateString() === value.format('DD.MM.YYYY'),
     );
     return trainings || [];
 };
