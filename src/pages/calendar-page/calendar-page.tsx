@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { AntdContent, modalTrainingError, TrainingListItem } from '@components/index';
 import { Calendar } from 'antd';
 import { Grid } from 'antd';
@@ -14,6 +14,7 @@ import {
     ResponceTrainingTypeList,
     useGetTrainingTypeListMutation,
 } from '@services/training';
+import { formatDate } from '@utils/format-date';
 import { calendarLocale } from '@utils/locale';
 import { position } from '@utils/modal-cell-position';
 import classNames from 'classnames';
@@ -24,14 +25,14 @@ import './calendar-page.scss';
 
 const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
     const trainings = data?.filter(
-        (training) => new Date(training.date).toLocaleDateString() === value.format('DD.MM.YYYY'),
+        (training) => formatDate(training.date) === value.format('DD.MM.YYYY'),
     );
     return trainings || [];
 };
 
 export const CalendarPage = () => {
     const firstMount = useRef(false);
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!firstMount.current) {
             firstMount.current = true;
             getTrainingTypeList();

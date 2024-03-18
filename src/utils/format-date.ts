@@ -1,4 +1,4 @@
 export const formatDate = (date: string) => {
     const dateToFormat = new Date(date);
-    return Intl.DateTimeFormat().format(dateToFormat);
+    return dateToFormat.toLocaleDateString('ru');
 };
