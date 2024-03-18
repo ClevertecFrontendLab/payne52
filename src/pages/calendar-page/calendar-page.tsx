@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AntdContent, modalTrainingError, TrainingListItem } from '@components/index';
 import { Calendar } from 'antd';
 import { Grid } from 'antd';
@@ -31,11 +31,11 @@ const getTrainingList = (data: ResponceTrainingList, value: Moment) => {
 };
 
 export const CalendarPage = () => {
-    const firstMount = useRef(false);
-    useLayoutEffect(() => {
-        if (!firstMount.current) {
-            firstMount.current = true;
+    const ref = useRef(true);
+    useEffect(() => {
+        if (ref.current) {
             getTrainingTypeList();
+            ref.current = false;
         }
     }, []);
 
