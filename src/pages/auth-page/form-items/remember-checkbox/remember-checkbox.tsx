@@ -1,4 +1,4 @@
-import { AntdFormItem } from '@components/form-item/form-item';
+import { AntdFormItem } from '@components/generic/form-item/form-item';
 import { Checkbox } from 'antd';
 
 type Props = {

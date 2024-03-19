@@ -8,11 +8,12 @@ interface CardInt {
     className?: string;
     title?: string;
     description?: string;
+    style?: object;
 }
 
 const { Meta } = Card;
 
-export const AntdCard = ({ children, className = '', title, description }: CardInt) => {
+export const AntdCard = ({ children, className = '', title, description, style }: CardInt) => {
     const cardClass = classNames({
         [className]: className,
         'card-meta': description,
@@ -22,13 +23,13 @@ export const AntdCard = ({ children, className = '', title, description }: CardI
     return (
         <>
             {description ? (
-                <Card className={cardClass}>
+                <Card className={cardClass} style={style}>
                     <Meta title={title} description={description} />
                     <Divider className='divider' />
                     {children}
                 </Card>
             ) : (
-                <Card className={cardClass} title={title}>
+                <Card className={cardClass} title={title} style={style}>
                     {children}
                 </Card>
             )}

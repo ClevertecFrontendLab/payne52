@@ -1,4 +1,4 @@
-import { AntdButton } from '@components/button';
+import { AntdButton } from '@components/generic/button';
 import { Paths } from '@constants/paths';
 import { history } from '@redux/configure-store';
 import { Result } from 'antd';

@@ -1,0 +1,46 @@
+@use '@assets/scss/variables' as *;
+
+.ant-modal-confirm.modal-trainig-error {
+    & .ant-modal-body {
+        padding: 16px 24px;
+
+        & .ant-modal-confirm-body {
+            padding-right: 80px;
+
+            & .anticon {
+                font-size: 22px;
+                color: $primary-light-6;
+            }
+
+            & .ant-modal-confirm-content {
+                color: $character-light-secondary-45;
+            }
+        }
+    }
+}
+
+.ant-modal-confirm.modal-trainig-error.send-trainig-error {
+    & .ant-modal-body {
+        padding: 32px 32px 24px;
+
+        & .ant-modal-confirm-body {
+            padding: 0;
+
+            & .anticon {
+                color: $character-light-error;
+            }
+
+            & .ant-modal-confirm-title {
+                font-weight: 500;
+            }
+
+            & .ant-modal-confirm-content {
+                color: $character-light-title-85;
+            }
+        }
+
+        & .ant-btn {
+            height: 40px;
+        }
+    }
+}

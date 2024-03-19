@@ -1,5 +1,5 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
-import { AntdCard } from '@components/card/card';
+import { AntdCard } from '@components/generic/card/card';
 import { Paths } from '@constants/paths';
 import { history } from '@redux/configure-store';
 import { Button, Space } from 'antd';

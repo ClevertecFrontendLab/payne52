@@ -1,7 +1,7 @@
-@use '../../assets/scss/variables' as *;
+@use '@assets/scss/variables' as *;
 
 .form-item.ant-form-item {
-    margin-bottom: 32px;
+    margin-bottom: 0;
 
     & [role='alert'] > div {
         font-size: 12px;
@@ -10,9 +10,5 @@
         &.ant-form-item-explain-error {
             color: $character-light-error;
         }
-    }
-
-    &:last-child {
-        margin-bottom: 0;
     }
 }

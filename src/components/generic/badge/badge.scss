@@ -1,0 +1,24 @@
+@use '@assets/scss/variables' as *;
+
+.badge {
+    & .ant-badge-status-text {
+        font-size: 12px;
+    }
+
+    &.legs .ant-badge-status-dot {
+        background-color: $tranie-red;
+    }
+
+    &.hands .ant-badge-status-dot {
+        background-color: $tranie-cyan;
+    }
+    &.strength .ant-badge-status-dot {
+        background-color: $tranie-yellow;
+    }
+    &.back .ant-badge-status-dot {
+        background-color: $tranie-orange;
+    }
+    &.chest .ant-badge-status-dot {
+        background-color: $tranie-green;
+    }
+}

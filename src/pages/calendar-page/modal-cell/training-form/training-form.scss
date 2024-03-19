@@ -1,0 +1,158 @@
+@use '@assets/scss/variables' as *;
+
+.ant-modal.modal-cell {
+    & .modal-cell-form {
+        & div.ant-modal-header {
+            border-bottom: 1px solid $character-light-dividers;
+            padding: 12px;
+
+            & .ant-modal-close.button-back {
+                left: 4px;
+                top: 12px;
+                right: auto;
+
+                & .anticon {
+                    width: 28px;
+                    height: 28px;
+                    font-size: 16px;
+                    color: $character-light-title-85;
+                }
+            }
+
+            & .ant-form-item-control-input {
+                min-height: 0;
+            }
+
+            & .ant-select {
+                width: calc(100% - 18px);
+
+                & .ant-select-selector,
+                & .ant-select-selector .ant-select-selection-search-input {
+                    height: 28px;
+                    line-height: 28px;
+                }
+
+                & .ant-select-selector {
+                    margin-left: 18px;
+                    border: 0;
+
+                    & .ant-select-selection-placeholder {
+                        color: $character-light-title-85;
+                    }
+                }
+
+                & .ant-select-arrow {
+                    color: $character-light-secondary-45;
+                    right: -10px;
+                    top: 55%;
+                }
+            }
+        }
+
+        & .ant-modal-body {
+            max-height: 200px;
+
+            & div.ant-empty-image {
+                margin-bottom: 12px;
+            }
+
+            & .training-list {
+                margin-right: -12px;
+
+                & .training-list-item {
+                    color: $character-light-secondary-45;
+                    margin-bottom: 12px;
+
+                    &:hover {
+                        background: none;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    & span {
+                        display: inline-block;
+                        max-width: 200px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+
+        & .save-button {
+            margin: 8px 0 0;
+        }
+    }
+}
+
+.ant-drawer-content-wrapper {
+    background-color: $character-light-primary-inverse;
+    border-radius: 8px 0 0 8px;
+
+    @media (max-width: 768px) {
+        border-radius: 24px 24px 0 0;
+    }
+
+    .ant-drawer-content {
+        background: none;
+    }
+
+    & .ant-drawer-wrapper-body > * {
+        padding-left: 32px;
+        padding-right: 32px;
+
+        @media (max-width: 768px) {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+    }
+
+    & .ant-drawer-header {
+        border-bottom: 0;
+        padding-top: 24px;
+        padding-bottom: 16px;
+
+        & .ant-drawer-header-title {
+            flex-direction: row-reverse;
+
+            & .ant-drawer-title {
+                font-size: 20px;
+                color: $character-light-title-85;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                & .anticon {
+                    font-size: 14px;
+                    color: $neutral-gray-13;
+                }
+            }
+
+            & .ant-drawer-close {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    & .ant-drawer-body {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+
+        & .training-info {
+            margin-bottom: 24px;
+            color: $character-light-secondary-45;
+            font-size: 14px;
+            width: 100%;
+            justify-content: space-between;
+            padding-bottom: 8px;
+
+            & .badge .ant-badge-status-text {
+                color: $character-light-secondary-45;
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
-import { AntdFormItem } from '@components/form-item/form-item';
-import { AntdInputPassword } from '@components/input';
+import { AntdFormItem } from '@components/generic/form-item/form-item';
+import { AntdInputPassword } from '@components/generic/input';
 
 type Props = {
     hasFeedback?: boolean;

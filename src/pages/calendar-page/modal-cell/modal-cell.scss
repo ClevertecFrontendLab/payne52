@@ -1,0 +1,97 @@
+@use '@assets/scss/variables' as *;
+
+.ant-modal.modal-cell {
+    width: 265px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    margin: 0 4px 0;
+    text-align: left;
+    cursor: default;
+
+    @media (max-width: 768px) {
+        right: 24px;
+        width: auto;
+        margin: 0;
+    }
+
+    & .ant-modal-content {
+        & .ant-modal-header,
+        & .ant-modal-body {
+            padding: 16px 12px;
+        }
+
+        & .ant-modal-footer {
+            padding: 12px;
+        }
+
+        & .ant-modal-close {
+            top: 16px;
+            right: 12px;
+
+            & .anticon {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
+        }
+
+        & .ant-modal-header {
+            border: 0;
+
+            & .ant-modal-title {
+                font-weight: 700;
+                font-size: 14px;
+            }
+        }
+
+        & div.ant-modal-body {
+            padding: 16px 12px;
+            min-height: 94px;
+
+            & .training-list-item {
+                margin: 0 -12px;
+                padding: 0 12px;
+
+                &:hover {
+                    background-color: $character-light-background;
+                }
+
+                &.disabled {
+                    & .ant-badge-status-text {
+                        color: $character-light-disable-25;
+                    }
+
+                    &:hover {
+                        background: none;
+                    }
+                }
+            }
+        }
+
+        & .no-content {
+            & .no-content-message {
+                margin-top: -24px;
+                padding-bottom: 16px;
+                color: $character-light-secondary-45;
+            }
+
+            & .ant-empty-image {
+                height: auto;
+                margin: 16px 0 0;
+
+                & img {
+                    height: 32px;
+                    width: auto;
+                }
+            }
+        }
+
+        & .button {
+            width: 100%;
+        }
+    }
+}

@@ -8,7 +8,8 @@ export type ErrorData = {
 };
 
 export type ModalProps = {
-    desktopSize: boolean | undefined;
+    desktopSize?: boolean | undefined;
     open?: boolean;
-    callback?: () => void;
+    close?: () => void;
+    dataTestId?: string;
 };

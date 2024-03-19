@@ -1,17 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { trackPromise } from 'react-promise-tracker';
-import {
-    AntdButton,
-    AntdContent,
-    FeedbacksAddFirstMessage,
-    FeedbacksItem,
-} from '@components/index';
+import { AntdButton, AntdContent } from '@components/index';
 import { ModalError500, ModalFeedbackForm } from '@components/modals';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectFeedbacksUpdate } from '@redux/feedbackSlice';
 import { useGetFeedbacksMutation } from '@services/feedback';
 import { Grid, List } from 'antd';
 import classNames from 'classnames';
+
+import { FeedbacksAddFirstMessage } from './feedbacks-add-first-message';
+import { FeedbacksItem } from './feedbacks-item';
 
 import './feedbacks-page.scss';
 
@@ -58,7 +56,7 @@ export const FeedbacksPage = () => {
     const [error500, setError500] = useState(false);
     const getFeedback = async () => {
         try {
-            await trackPromise(showFeedback('').unwrap());
+            await trackPromise(showFeedback().unwrap());
         } catch (err) {
             setError500(true);
         }

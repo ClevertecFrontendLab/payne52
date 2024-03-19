@@ -1,7 +1,7 @@
-@use '../../assets/scss/variables' as *;
+@use '@assets/scss/variables' as *;
 
-main.content {
-    background-image: url(../../assets/img/main-page_light.jpg);
+.content {
+    background-image: url(@assets/img/main-page_light.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom left;
